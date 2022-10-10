@@ -72,6 +72,7 @@ document.querySelector('#show-modal').addEventListener('click',()=>{
     cantidad.value="";
     precio.value="";
     fecha.value="";
+ 
     limpiarSelectE();
     document.querySelector('.modal-container').classList.add("modal-container-active")
 });
@@ -86,10 +87,26 @@ const optionsContainer= document.querySelector("[data-elemento-container]");
 selected.addEventListener("click",()=>{
     optionsContainer.classList.toggle('active');
     const optionsList=optionsContainer.querySelectorAll(".option");
+    const precioInput=document.querySelector('#precio');
+    const tituloPrecio=document.querySelector('.label-titulo-precio');
+    
+    
     optionsList.forEach(o=>{
         o.addEventListener('click', ()=>{
             selected.innerHTML=o.querySelector(".label").innerHTML;
             document.querySelector('#idElemento').value=o.getAttribute('data-id');
+
+            if(o.getAttribute("data-categoria")=='Insumo'){
+                precioInput.type='hidden';
+                precioInput.value=' ';
+                tituloPrecio.classList.add('ocultar');
+            }else{
+                precioInput.value='';
+                precioInput.type='number';
+                tituloPrecio.classList.remove('ocultar');
+
+            }
+            
             optionsContainer.classList.remove("active");
         })
     })

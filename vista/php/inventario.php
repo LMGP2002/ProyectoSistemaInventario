@@ -6,7 +6,7 @@ include("layout/header.php");
             <div class="table_header">
                 <h3 class="title" data-dark>Inventario</h3>
                 <div>
-                    <input class="search" placeholder="Inventario">
+                    <input class="search" placeholder="Elemento">
                     
                 </div>
             </div>

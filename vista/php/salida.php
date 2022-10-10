@@ -63,11 +63,11 @@ include("layout/header.php");
                         </div>
                         <div class="form-element">
                             <label class="label-titulo" for="cantidad">Cantidad:</label>
-                            <input data-cant class="inputN" name="cantidad" type="number" id="cantidad" placeholder="Ingrese la cantidad de ingreso">
+                            <input data-cant class="inputN" name="cantidad" type="number" id="cantidad" placeholder="Ingrese la cantidad de salida">
                         </div>
                         <div class="form-element">
-                            <label class="label-titulo" for="precio">Precio de venta:</label>
-                            <input data-prec class="inputN" name="precio" type="number" id="precio" placeholder="Ingrese el precio de compra">
+                            <label class="label-titulo label-titulo-precio ocultar" for="precio">Precio de venta:</label>
+                            <input data-prec class="inputN" name="precio" type="hidden" id="precio" placeholder="Ingrese el precio de venta del producto">
                         </div>
                         
                         <div class="form-element">

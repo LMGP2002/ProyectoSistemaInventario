@@ -36,6 +36,7 @@ btnregistrar.addEventListener('click',()=>{
                 $('.swal2-container').css("z-index",'999999');
                 form_registro.reset();
                 listarProveedores();
+                limpiarSelect();
                 break;
                 case 'modificado':
                     Swal.fire({
