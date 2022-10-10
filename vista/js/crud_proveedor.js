@@ -121,3 +121,47 @@ function selectBox(){
     })
 }
 
+
+
+function eliminar(id){
+    Swal.fire({
+        title: 'Atención',
+        text: "¿Desea eliminar el elemento?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Aceptar',
+        cancelButtonText: 'Cancelar'
+      }).then((result) => {
+        if (result.isConfirmed) {
+
+        fetch("../../controlador/eliminar_proveedor.php",{
+                method:"POST",
+                body: id
+            }).then(response => response.text()).then(response => {
+                if(response=="ok"){
+                    listarProveedores();
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Elemento eliminado',
+                        showConfirmButton: false,
+                        timer: 1500    
+                    })
+                }else{
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Elemento no eliminado',
+                        showConfirmButton: false,
+                        timer: 1500    
+                    })
+
+                }
+
+            })
+
+          
+        }
+      })
+}
+

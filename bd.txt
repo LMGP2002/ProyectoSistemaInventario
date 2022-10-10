@@ -5,16 +5,17 @@ nom_ciu varchar (20) not null
 create table elemento (
 codigo int primary key AUTO_INCREMENT not null,
 nombre varchar (50) not null,
-estado varchar (15) not null,
+estado varchar (15) not null DEFAULT 'Activo',
 descripcion varchar (100) null,
 tipo_elemento varchar (10) not null
 );
 create table proveedor (
-nit INT primary key not null,
+id INT primary key not null AUTO_INCREMENT,
+nit varchar(15) not null,
 nom_prov varchar (50) not null,
 direc_prov varchar (50) not null,
 tel_prov varchar (10) not null,
-estado_prov bit not null,
+estado_prov varchar (15) not null DEFAULT 'Activo',
 id_ciudad int not null,
 CONSTRAINT fk_id_ciudad FOREIGN KEY (id_ciudad) REFERENCES ciudad (id_ciudad)
 );
@@ -31,8 +32,8 @@ id_entrada int primary key AUTO_INCREMENT not null,
 fecha_entrada date not null,
 codigo_elemento int not null,
 cant int not null,
-nit_prov INT not null,
+id_prov INT not null,
 precio_comp Real not null,
 CONSTRAINT fk_codigo_elemento_en FOREIGN KEY (codigo_elemento) REFERENCES elemento (codigo),
-CONSTRAINT fk_nit_prov FOREIGN KEY (nit_prov) REFERENCES proveedor (nit)
+CONSTRAINT fk_id_prov FOREIGN KEY (id_prov) REFERENCES proveedor (id)
 );
