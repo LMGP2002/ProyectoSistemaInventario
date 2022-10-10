@@ -86,7 +86,7 @@ function limpiarSelect(){
 
 
 // NUMBER TEXT 
-var input=  document.querySelectorAll('.inputN');
+var input=document.querySelectorAll('.inputN');
 
 input.forEach(el=>{
     el.addEventListener('input',function(){

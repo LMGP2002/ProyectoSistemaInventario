@@ -6,7 +6,7 @@ include("layout/header.php");
             <div class="table_header">
                 <h3 class="title" data-dark>Entradas</h3>
                 <div>
-                    <input class="search" placeholder="Proveedor">
+                    <input class="search" placeholder="Entrada">
                     <button class="add_new" id="show-modal">Añadir entrada</button>
                 </div>
             </div>
@@ -40,11 +40,11 @@ include("layout/header.php");
             <div class="modal">
                 <div class="close-btn">&times;</div>
                 <div class="form">
-                    <h2>Añadir ciudad</h2>
+                    <h2>Añadir entrada</h2>
                     <form id="form_registro" method="POST">
-                        <input type="text" name="idE" value="" id="idE">
-                        <input type="text" name="idElemento" value="" id="idElemento">
-                        <input type="text" name="idCiudad" value="" id="idCiudad">
+                        <input type="hidden" name="idE" value="" id="idE">
+                        <input type="hidden" name="idElemento" value="" id="idElemento">
+                        <input type="hidden" name="idProveedor" value="" id="idProveedor">
 
                         <div  class="select-container">
 
@@ -70,7 +70,7 @@ include("layout/header.php");
                         
                         <div class="form-element">
                             <label class="label-titulo" for="cantidad">Cantidad:</label>
-                            <input class="inputN" name="cantidad" type="number" id="cantidad" placeholder="Ingrese la cantidad de ingreso">
+                            <input data-cant class="inputN" name="cantidad" type="number" id="cantidad" placeholder="Ingrese la cantidad de ingreso">
                         </div>
                         
                         
@@ -98,7 +98,7 @@ include("layout/header.php");
                        
                         <div class="form-element">
                             <label class="label-titulo" for="precio">Precio de compra:</label>
-                            <input maxlength="10" name="precio" type="text" id="precio" placeholder="Ingrese el precio de compra">
+                            <input data-prec class="inputN" name="precio" type="number" id="precio" placeholder="Ingrese el precio de compra">
                         </div>
                         
                    
