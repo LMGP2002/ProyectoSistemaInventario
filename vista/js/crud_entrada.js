@@ -48,6 +48,8 @@ btnregistrar.addEventListener('click',()=>{
                 $('.swal2-container').css("z-index",'999999');
                 form_registro.reset();
                 listarEntradas();
+                limpiarSelectE();
+                limpiarSelectP(); 
               break;
             default:
                 Swal.fire({
@@ -57,8 +59,10 @@ btnregistrar.addEventListener('click',()=>{
                     timer: 1500    
                 })
                 $('.swal2-container').css("z-index",'999999');
-                form_registro.reset();   
-            }
+                form_registro.reset();
+                limpiarSelectE();
+                limpiarSelectP();  
+        }
     })
 })
 
@@ -68,9 +72,10 @@ document.querySelector('#show-modal').addEventListener('click',()=>{
     document.querySelector('#btnregistrar').textContent ="Agregar";
     idE.value="";
     idElemento.value="";
-    idCiudad.value="";
+    idProveedor.value="";
     cantidad.value="";
     precio.value="";
+    fecha.value="";
     limpiarSelectE();
     limpiarSelectP();
     document.querySelector('.modal-container').classList.add("modal-container-active")
@@ -121,7 +126,7 @@ selected2.addEventListener("click",()=>{
     optionsList.forEach(o=>{
         o.addEventListener('click', ()=>{
             selected2.innerHTML=o.querySelector(".label").innerHTML;
-            document.querySelector('#idCiudad').value=o.getAttribute('data-id');
+            document.querySelector('#idProveedor').value=o.getAttribute('data-id');
             optionsContainer2.classList.remove("active");
         })
     })
@@ -142,13 +147,59 @@ function limpiarSelectP(){
 }
 
 // NUMBER TEXT 
-var input=  document.querySelector('.inputN');
+var input=document.querySelectorAll('.inputN');
 
-
-    input.addEventListener('input',function(){
-        if (this.value.length > 3) this.value = this.value.slice(0,3);  
+input.forEach(el=>{
+    el.addEventListener('input',function(){
+        if(el.hasAttribute('data-cant')){
+            if (el.value.length > 3) this.value = this.value.slice(0,3); 
+        }else{
+            if (this.value.length > 10) this.value = this.value.slice(0,10); 
+        }
     })
+})
 
 
+//eliminar
+function eliminar(id){
+    Swal.fire({
+        title: 'Atención',
+        text: "¿Desea eliminar la entrada?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Aceptar',
+        cancelButtonText: 'Cancelar'
+      }).then((result) => {
+        if (result.isConfirmed) {
 
-    
+        fetch("../../controlador/eliminar_entrada.php",{
+                method:"POST",
+                body: id
+            }).then(response => response.text()).then(response => {
+                if(response=="ok"){
+                    listarEntradas();
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Elemento eliminado',
+                        showConfirmButton: false,
+                        timer: 1500    
+                    })
+                }else{
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Elemento no eliminado',
+                        showConfirmButton: false,
+                        timer: 1500    
+                    })
+
+                }
+
+            })
+
+          
+        }
+      })
+}
+  
