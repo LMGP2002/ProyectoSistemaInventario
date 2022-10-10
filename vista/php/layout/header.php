@@ -79,7 +79,12 @@
                             <span class="text nav-text">Salidas</span>
                         </a>
                     </li>
-
+                    <li class="nav-link">
+                    <a href="../php/inventario.php">
+                            <i class='bx bx-wallet icon' ></i>
+                            <span class="text nav-text">Inventario</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
 
