@@ -74,9 +74,9 @@
                     </li>
 
                     <li class="nav-link">
-                        <a href="#">
+                    <a href="../php/salida.php">
                             <i class='bx bx-wallet icon' ></i>
-                            <span class="text nav-text">Wallets</span>
+                            <span class="text nav-text">Salidas</span>
                         </a>
                     </li>
 
