@@ -22,12 +22,12 @@ if(isset($_POST)){
             $pdo=null;
             echo "ok";
         }else{
-            $query=$pdo->prepare("UPDATE proveedor SET nit=:nit, nom_prov=:nom, direc_prov=:dic, tel_prov=:tel, id_ciudad=:idCiu WHERE id=:id");
-            $query->bindParam(":nit",$nit);
-            $query->bindParam(":nom",$nombre);
-            $query->bindParam(":dic",$direccion);
-            $query->bindParam(":tel",$telefono);
-            $query->bindParam(":idCiu",$idCiudad);
+            $query=$pdo->prepare("UPDATE entrada SET fecha_entrada=:fech, codigo_elemento=:idEle, cant=:cant, id_prov=:idProv, precio_comp=:pre WHERE id_entrada=:id");
+            $query->bindParam(":fech",$fecha);
+            $query->bindParam(":idEle",$idElemento);
+            $query->bindParam(":cant",$cantidad);
+            $query->bindParam(":idProv",$idProveedor);
+            $query->bindParam(":pre",$precio);
             $query->bindParam(":id",$id);
             $query->execute();
             $pdo=null;

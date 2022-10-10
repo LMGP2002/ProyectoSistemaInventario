@@ -37,6 +37,8 @@ btnregistrar.addEventListener('click',()=>{
                 $('.swal2-container').css("z-index",'999999');
                 form_registro.reset();
                 listarEntradas();
+                limpiarSelectE();
+                limpiarSelectP(); 
                 break;
                 case 'modificado':
                     Swal.fire({
@@ -203,3 +205,46 @@ function eliminar(id){
       })
 }
   
+//editar
+function editar(id){
+    document.querySelector('.form h2').innerHTML="Modificar entrada";
+    document.querySelector('#btnregistrar').textContent ="Modificar";
+    document.querySelector('.modal-container').classList.add("modal-container-active");
+
+    fetch("../../controlador/editar_entrada.php",{
+        method:"POST",
+        body: id
+    }).then(response => response.json()).then(response => {
+        idE.value=response.id_entrada;
+        idElemento.value=response.codigo_elemento;
+        idProveedor.value=response.id_prov;
+
+        //traer elemento
+        const options=document.querySelector("[data-elemento-container]");
+        const optionsList=options.querySelectorAll(".option");
+        const selected=document.querySelector("[data-elemento-selected]");
+
+        optionsList.forEach(e=>{
+            if(e.getAttribute('data-id')==idElemento.value){
+                selected.innerHTML=e.querySelector(".label").innerHTML;
+            }
+        });
+
+        fecha.value=response.fecha_entrada;
+        cantidad.value=response.cant;
+
+        //traer proveedor
+        const options2=document.querySelector("[data-proveedor-container]");
+        const optionsList2=options2.querySelectorAll(".option");
+        const selected2= document.querySelector("[data-proveedor-selected]");
+
+        optionsList2.forEach(e=>{
+            if(e.getAttribute('data-id')==idProveedor.value){
+                selected2.innerHTML=e.querySelector(".label").innerHTML;
+            }
+        });
+
+        precio.value=response.precio_comp.replace("$", "");
+        
+    })
+}
