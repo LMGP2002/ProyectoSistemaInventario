@@ -15,8 +15,8 @@
             <td>".$data['nombreP']."</td>
             <td>".$data['precio']."</td>
             <td>
-                <button type='button'><i class='fa-solid fa-pen-to-square'></i></button>
-                <button type='button'><i class='fa-solid fa-trash'></i></button>
+                <button type='button' onClick=editar('".$data['id']."')><i class='fa-solid fa-pen-to-square'></i></button>
+                <button type='button' onClick=eliminar('".$data['id']."')><i class='fa-solid fa-trash'></i></button>
             </td>
         </tr>";
     } 

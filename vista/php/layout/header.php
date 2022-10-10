@@ -75,13 +75,13 @@
 
                     <li class="nav-link">
                     <a href="../php/salida.php">
-                            <i class='bx bx-wallet icon' ></i>
+                        <i class='bx bx-log-out-circle icon'></i>
                             <span class="text nav-text">Salidas</span>
                         </a>
                     </li>
                     <li class="nav-link">
                     <a href="../php/inventario.php">
-                            <i class='bx bx-wallet icon' ></i>
+                        <i class='bx bx-notepad icon'></i>
                             <span class="text nav-text">Inventario</span>
                         </a>
                     </li>

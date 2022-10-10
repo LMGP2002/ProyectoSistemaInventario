@@ -135,7 +135,7 @@ function selectBox(){
 function eliminar(id){
     Swal.fire({
         title: 'Atención',
-        text: "¿Desea eliminar el elemento?",
+        text: "¿Desea eliminar el proveedor?",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',

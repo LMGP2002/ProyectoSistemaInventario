@@ -48,6 +48,8 @@ btnregistrar.addEventListener('click',()=>{
                 $('.swal2-container').css("z-index",'999999');
                 form_registro.reset();
                 listarEntradas();
+                limpiarSelectE();
+                limpiarSelectP(); 
               break;
             default:
                 Swal.fire({
@@ -158,5 +160,46 @@ input.forEach(el=>{
 })
 
 
+//eliminar
+function eliminar(id){
+    Swal.fire({
+        title: 'Atención',
+        text: "¿Desea eliminar la entrada?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Aceptar',
+        cancelButtonText: 'Cancelar'
+      }).then((result) => {
+        if (result.isConfirmed) {
 
-    
+        fetch("../../controlador/eliminar_entrada.php",{
+                method:"POST",
+                body: id
+            }).then(response => response.text()).then(response => {
+                if(response=="ok"){
+                    listarEntradas();
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Elemento eliminado',
+                        showConfirmButton: false,
+                        timer: 1500    
+                    })
+                }else{
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Elemento no eliminado',
+                        showConfirmButton: false,
+                        timer: 1500    
+                    })
+
+                }
+
+            })
+
+          
+        }
+      })
+}
+  
