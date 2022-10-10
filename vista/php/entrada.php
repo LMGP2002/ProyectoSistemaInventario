@@ -6,7 +6,7 @@ include("layout/header.php");
             <div class="table_header">
                 <h3 class="title" data-dark>Entradas</h3>
                 <div>
-                    <input class="search" placeholder="Entrada">
+                    <input class="search" placeholder="Fecha">
                     <button class="add_new" id="show-modal">Añadir entrada</button>
                 </div>
             </div>
