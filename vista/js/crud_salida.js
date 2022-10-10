@@ -34,6 +34,7 @@ btnregistrar.addEventListener('click',()=>{
                 $('.swal2-container').css("z-index",'999999');
                 form_registro.reset();
                 listarSalidas();
+                limpiarSelectE()
                 break;
                 case 'modificado':
                     Swal.fire({
@@ -161,3 +162,29 @@ function eliminar(id){
       })
 }
 
+function editar(id){
+    document.querySelector('.form h2').innerHTML="Modificar salida";
+    document.querySelector('#btnregistrar').textContent ="Modificar";
+    document.querySelector('.modal-container').classList.add("modal-container-active");
+
+    fetch("../../controlador/editar_salida.php",{
+        method:"POST",
+        body: id
+    }).then(response => response.json()).then(response => {
+        idE.value=response.id_salida;
+        idElemento.value=response.codigo_elemento;
+
+        const optionsList=document.querySelectorAll(".option");
+        const selected= document.querySelector(".selected");
+
+        optionsList.forEach(e=>{
+            if(e.getAttribute('data-id')==idElemento.value){
+                selected.innerHTML=e.querySelector(".label").innerHTML;
+            }
+        });
+
+        fecha.value=response.fecha_salida;
+        cantidad.value=response.cant_elem_sal;
+        precio.value=response.precio_venta.replace("$", "");
+    })
+}
