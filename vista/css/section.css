@@ -288,7 +288,7 @@ tr:hover td{
 .select-box .options-container{
     background-color: rgb(95, 127, 151);
     color: #f5f6fa;
-    max-height: 0;
+    max-height: 100px;
     width: 100%;
     opacity: 0;
     transition: all 0.4s;
@@ -323,7 +323,7 @@ tr:hover td{
 }
 
 .select-box .options-container.active{
-    max-height: 240px;
+    max-height: 100px;
     opacity: 1;
     overflow-y: scroll;
 }

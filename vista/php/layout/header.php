@@ -67,9 +67,9 @@
                     </li>
 
                     <li class="nav-link">
-                        <a href="#">
-                            <i class='bx bx-heart icon' ></i>
-                            <span class="text nav-text">Likes</span>
+                        <a href="../php/entrada.php">
+                            <i class='bx bx-log-in-circle icon'></i>
+                            <span class="text nav-text">Entradas</span>
                         </a>
                     </li>
 
