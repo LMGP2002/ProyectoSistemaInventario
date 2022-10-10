@@ -46,6 +46,7 @@ btnregistrar.addEventListener('click',()=>{
                 })
                 $('.swal2-container').css("z-index",'999999');
                 form_registro.reset();
+                limpiarSelect();
                 listarProveedores();
               break;
             default:
@@ -69,11 +70,19 @@ document.querySelector('#show-modal').addEventListener('click',()=>{
     });
     nombre.value="";
     idE.value="";
+    idCiudad.value="";
     nit.value="";
     direccion.value="";
     telefono.value="";
+    limpiarSelect();
     document.querySelector('.modal-container').classList.add("modal-container-active")
 });
+
+
+function limpiarSelect(){
+    const selected= document.querySelector(".selected");
+    selected.innerHTML="Seleccione la ciudad";
+}
 
 
 // NUMBER TEXT 
@@ -165,3 +174,28 @@ function eliminar(id){
       })
 }
 
+function editar(id){
+    document.querySelector('.form h2').innerHTML="Modificar proveedor";
+    document.querySelector('#btnregistrar').textContent ="Modificar";
+    document.querySelector('.modal-container').classList.add("modal-container-active");
+
+    fetch("../../controlador/editar_proveedor.php",{
+        method:"POST",
+        body: id
+    }).then(response => response.json()).then(response => {
+        idE.value=response.id;
+        nit.value=response.nit;
+        nombre.value=response.nom_prov;
+        direccion.value=response.direc_prov;
+        telefono.value=response.tel_prov;
+        idCiudad.value=response.id_ciudad;
+        const optionsList=document.querySelectorAll(".option");
+        const selected= document.querySelector(".selected");
+
+        optionsList.forEach(e=>{
+            if(e.getAttribute('data-id')==idCiudad.value){
+                selected.innerHTML=e.querySelector(".label").innerHTML;
+            }
+        });
+    })
+}
