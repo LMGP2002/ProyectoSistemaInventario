@@ -15,11 +15,11 @@ include("layout/header.php");
                 <table class="table" data-dark>
                     <thead>
                         <tr>
-                            <th>Cod elemento</th>
-                            <th>Nom elemento</th>
-                            <th>Tip elemento</th>
-                            <th>Cant entrada</th>
-                            <th>Cant salida</th>
+                            <th>Código elemento</th>
+                            <th>Nombre elemento</th>
+                            <th>Tipo elemento</th>
+                            <th>Cantidad entrada</th>
+                            <th>Cantidad salida</th>
                             <th>Stock</th>
                         </tr>
                     </thead>
