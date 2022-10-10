@@ -37,3 +37,6 @@ precio_comp Real not null,
 CONSTRAINT fk_codigo_elemento_en FOREIGN KEY (codigo_elemento) REFERENCES elemento (codigo),
 CONSTRAINT fk_id_prov FOREIGN KEY (id_prov) REFERENCES proveedor (id)
 );
+ALTER TABLE entrada MODIFY precio_comp varchar(15);
+ALTER TABLE salida MODIFY precio_venta varchar(15);
+

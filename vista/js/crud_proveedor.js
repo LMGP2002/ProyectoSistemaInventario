@@ -161,9 +161,11 @@ function eliminar(id){
                     Swal.fire({
                         icon: 'error',
                         title: 'Elemento no eliminado',
+                        text: "Puede tener relación con algún registro",
                         showConfirmButton: false,
-                        timer: 1500    
+                        timer: 3000   
                     })
+                    
 
                 }
 
