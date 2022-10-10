@@ -1,18 +1,18 @@
 <?php
     require "../modelo/conexion.php";
-    $consulta=$pdo->prepare("SELECT elemento.codigo as codEle,elemento.nombre as nomEle,elemento.tipo_elemento as tipEle,salida.cant_elem_sal as salida,entrada.cant as entrada, entrada.cant-salida.cant_elem_sal as resta FROM `salida`INNER JOIN elemento INNER JOIN entrada on salida.codigo_elemento=elemento.codigo and entrada.codigo_elemento=elemento.codigo;");
+    $consulta=$pdo->prepare("SELECT elemento.codigo as codE,elemento.nombre as nomE,elemento.tipo_elemento as tipoE, sum(entrada.cant) as cantE, sum(salida.cant_elem_sal) as cantS, sum(entrada.cant)-sum(salida.cant_elem_sal) as Stock FROM elemento INNER JOIN entrada INNER JOIN salida on elemento.codigo=entrada.codigo_elemento AND elemento.codigo=salida.codigo_elemento GROUP by nomE;");
     $consulta->execute();
     $resultado=$consulta->fetchAll(PDO::FETCH_ASSOC);    
 
     foreach($resultado as $data){
         
         echo "<tr>
-            <td>".$data['codEle']."</td>
-            <td>".$data['nomEle']."</td>
-            <td>".$data['tipEle']."</td>
-            <td>".$data['salida']."</td>
-            <td>".$data['entrada']."</td>
-            <td>".$data['resta']."</td>
+            <td>".$data['codE']."</td>
+            <td>".$data['nomE']."</td>
+            <td>".$data['tipoE']."</td>
+            <td>".$data['cantE']."</td>
+            <td>".$data['cantS']."</td>
+            <td>".$data['Stock']."</td>
             
         </tr>";
     } 
