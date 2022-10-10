@@ -1,5 +1,6 @@
 listarEntradas();
-
+selectElemento();
+selectProveedor();
 
 function listarEntradas(){
     fetch("../../controlador/listar_entrada.php",{
@@ -11,7 +12,7 @@ function listarEntradas(){
 
 
 btnregistrar.addEventListener('click',()=>{
-    fetch("../../controlador/registro_proveedor.php",{
+    fetch("../../controlador/registro_entrada.php",{
         method:"POST",
         body:new FormData(form_registro)
     }).then(response => response.text()).then(response => {
@@ -35,7 +36,7 @@ btnregistrar.addEventListener('click',()=>{
                 })
                 $('.swal2-container').css("z-index",'999999');
                 form_registro.reset();
-                listarProveedores();
+                listarEntradas();
                 break;
                 case 'modificado':
                     Swal.fire({
@@ -46,8 +47,7 @@ btnregistrar.addEventListener('click',()=>{
                 })
                 $('.swal2-container').css("z-index",'999999');
                 form_registro.reset();
-                limpiarSelect();
-                listarProveedores();
+                listarEntradas();
               break;
             default:
                 Swal.fire({
@@ -67,61 +67,79 @@ document.querySelector('#show-modal').addEventListener('click',()=>{
     document.querySelector('.form h2').innerHTML="Agregar entrada";
     document.querySelector('#btnregistrar').textContent ="Agregar";
     idE.value="";
+    idElemento.value="";
     idCiudad.value="";
     cantidad.value="";
     precio.value="";
-    //limpiarSelect();
+    limpiarSelectE();
+    limpiarSelectP();
     document.querySelector('.modal-container').classList.add("modal-container-active")
 });
 
-//select elemento proveedor
-
-const selected= document.querySelectorAll(".selected");
-const optionsContainer=document.querySelectorAll(".options-container");
-
-console.log(selected);
-console.log(optionsContainer);
+//select elemento 
 
 
+const selected= document.querySelector("[data-elemento-selected]");
+const optionsContainer= document.querySelector("[data-elemento-container]");
 
 
-selected.forEach(e=>{
-
-    if(e.hasAttribute('data-elemento')){
-        e.addEventListener('click',()=>{
-            optionsContainer[0].classList.toggle('active');
-            selectElemento(optionsContainer[0]);
+selected.addEventListener("click",()=>{
+    optionsContainer.classList.toggle('active');
+    const optionsList=optionsContainer.querySelectorAll(".option");
+    optionsList.forEach(o=>{
+        o.addEventListener('click', ()=>{
+            selected.innerHTML=o.querySelector(".label").innerHTML;
+            document.querySelector('#idElemento').value=o.getAttribute('data-id');
+            optionsContainer.classList.remove("active");
         })
-    }else{
-        e.addEventListener('click',()=>{
-            optionsContainer[1].classList.toggle('active');
-            selectProveedor(optionsContainer[1]);
-        })
-
-    }
-
-
+    })
 })
 
-
-
-
-
-function selectElemento(contenedor){
+function selectElemento(){
     fetch("../../controlador/listar_select_elemento.php",{
         method:"POST"
     }).then(response => response.text()).then(response => {
-        contenedor.innerHTML=response;
-    })
-}
-function selectProveedor(contenedor){
-    fetch("../../controlador/listar_select_proveedor.php",{
-        method:"POST"
-    }).then(response => response.text()).then(response => {
-        contenedor.innerHTML=response;
+        optionsContainer.innerHTML=response;
     })
 }
 
+function limpiarSelectE(){
+    const selected= document.querySelector("[data-elemento-selected]");
+    selected.innerHTML="Seleccione el elemento";
+}
+
+//select proveedor 
+
+
+const selected2= document.querySelector("[data-proveedor-selected]");
+const optionsContainer2= document.querySelector("[data-proveedor-container]");
+
+
+selected2.addEventListener("click",()=>{
+    optionsContainer2.classList.toggle('active');
+    const optionsList=optionsContainer2.querySelectorAll(".option");
+    optionsList.forEach(o=>{
+        o.addEventListener('click', ()=>{
+            selected2.innerHTML=o.querySelector(".label").innerHTML;
+            document.querySelector('#idCiudad').value=o.getAttribute('data-id');
+            optionsContainer2.classList.remove("active");
+        })
+    })
+})
+
+
+function selectProveedor(){
+    fetch("../../controlador/listar_select_proveedor.php",{
+        method:"POST"
+    }).then(response => response.text()).then(response => {
+        optionsContainer2.innerHTML=response;
+    })
+}
+
+function limpiarSelectP(){
+    const selected2= document.querySelector("[data-proveedor-selected]");
+    selected2.innerHTML="Seleccione el proveedor";
+}
 
 // NUMBER TEXT 
 var input=  document.querySelector('.inputN');

@@ -1,14 +1,13 @@
 <?php
 if(isset($_POST)){
-    $nit=$_POST['nit'];
-    $nombre=$_POST['nombre'];
-    $direccion=$_POST['direccion'];
-    $telefono=$_POST['telefono'];
-    $idCiudad=$_POST['idCiudad'];
     $id=$_POST['idE'];
+    $idCiudad=$_POST['idCiudad'];
+    $idElemento=$_POST['idElemento'];
+    $fecha=$_POST['fecha'];
+    $cantidad=$_POST['cantidad'];
     require("../modelo/conexion.php");
 
-    if(!empty($nit) and !empty($nombre) and !empty($direccion) and !empty($telefono) and !empty($idCiudad)){
+    if(!empty($idCiudad) and !empty($idElemento) and !empty($fecha) and !empty($cantidad)){
 
 
         if(empty($id)){

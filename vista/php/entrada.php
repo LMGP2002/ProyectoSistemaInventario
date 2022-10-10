@@ -42,18 +42,19 @@ include("layout/header.php");
                 <div class="form">
                     <h2>Añadir ciudad</h2>
                     <form id="form_registro" method="POST">
-                        <input type="hidden" name="idE" value="" id="idE">
-                        <input type="hidden" name="idCiudad" value="" id="idCiudad">
+                        <input type="text" name="idE" value="" id="idE">
+                        <input type="text" name="idElemento" value="" id="idElemento">
+                        <input type="text" name="idCiudad" value="" id="idCiudad">
 
                         <div  class="select-container">
 
                             <div class="select-box">
                                
-                                <div data-elemento class="options-container">
+                                <div data-elemento-container class="options-container">
                                                               
                                 </div>
 
-                                <div data-elemento class="selected">
+                                <div data-elemento-selected class="selected">
                                     Seleccione el elemento
                                 </div>
                             </div>
@@ -79,11 +80,11 @@ include("layout/header.php");
 
                             <div class="select-box">
                             
-                                <div data-proveedor class="options-container">
+                                <div data-proveedor-container class="options-container">
                                                             
                                 </div>
 
-                                <div data-proveedor  class="selected">
+                                <div data-proveedor-selected class="selected">
                                     Seleccione el proveedor
                                 </div>
                             </div>
