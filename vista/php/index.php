@@ -1,10 +1,6 @@
 <?php
 include("layout/header.php");
-
 ?>
-<head>
-<link rel="icon" href="../assets/cafe.png">
-</head>
 <section class="inicio">
             <div class="inicio-text">
                 <h1>
