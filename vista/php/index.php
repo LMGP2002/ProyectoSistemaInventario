@@ -2,10 +2,11 @@
 include("layout/header.php");
 
 ?>
+
+<section class="inicio">
 <head>
 <link rel="icon" href="cafe.png">
 </head>
-<section class="inicio">
             <div class="inicio-text">
                 <h1>
                     Sistema de Inventario
