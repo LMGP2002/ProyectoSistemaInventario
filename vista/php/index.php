@@ -5,7 +5,7 @@ include("layout/header.php");
 
 <section class="inicio">
 <head>
-<link rel="icon" href="cafe.png">
+<link rel="icon" href="../assets/cafe.png">
 </head>
             <div class="inicio-text">
                 <h1>
