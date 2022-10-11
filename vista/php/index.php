@@ -8,7 +8,7 @@ include("layout/header.php");
                 <h1>
                     Sistema de Inventario
                 </h1>
-                <p>Villa Monguí Café Arte</p>
+                <p>Villa Monguí (Café-Arte)</p>
                 <a href="#" class="btn">Ingresar ahora</a>
             </div>
     
