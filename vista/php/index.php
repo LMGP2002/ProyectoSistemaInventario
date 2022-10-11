@@ -2,7 +2,9 @@
 include("layout/header.php");
 
 ?>
-
+<head>
+<link rel="icon" href="cafe.png">
+</head>
 <section class="inicio">
             <div class="inicio-text">
                 <h1>
