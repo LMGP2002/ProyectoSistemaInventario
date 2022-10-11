@@ -1,6 +1,7 @@
 <?php
 include("layout/header.php");
 ?>
+
 <section class="inicio">
             <div class="inicio-text">
                 <h1>
