@@ -86,7 +86,16 @@
                         </a>
                     </li>
                 </ul>
+
+                <li class="nav-link">
+                    <a href="../php/usuario.php">
+                        <i class='bx bx-user-plus icon'></i>
+                            <span class="text nav-text">Usuarios</span>
+                        </a>
+                    </li>
+                </ul>
             </div>
+           
 
             <div class="bottom-content">
                 <li class="">
