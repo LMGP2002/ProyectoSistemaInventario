@@ -29,7 +29,7 @@ include("layout/header.php");
                         </div>
                         <div class="form-element">
                             <label class="label-titulo" for="password">Contraseña:</label>
-                            <input data-prec class="inputN" name="password" type="text" id="password" placeholder="Ingrese su contraseña">
+                            <input data-prec class="inputN" name="password" type="password" id="password" placeholder="Ingrese su contraseña">
                         </div>
                         
                         
