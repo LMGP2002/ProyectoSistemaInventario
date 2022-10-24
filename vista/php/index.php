@@ -19,7 +19,7 @@ include("layout/header.php");
 </main>
 <div class="modal-container">
             <div class="modal">
-                <div class="close-btn">&times;</div>
+            <div class="close-btn">&times;</div>
                     <div class="form">
                     <h2>Ingresar al sistema</h2>
                     
