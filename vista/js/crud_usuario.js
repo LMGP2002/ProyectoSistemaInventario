@@ -36,6 +36,7 @@ body: new FormData(form_registro)
           form_registro.reset();
           ListarUsuarios();
         }else if(response == "modificado"){
+                
             Swal.fire({
                 icon: 'success',
                 title: 'Modificado',
@@ -64,6 +65,7 @@ body: new FormData(form_registro)
 
 });
 
+
 document.querySelector('#show-modal').addEventListener('click',()=>{
     document.querySelector('.form h2').innerHTML="Agregar usuario";
     document.querySelector('#btnregistrar').textContent ="Agregar";
@@ -76,6 +78,39 @@ document.querySelector('#show-modal').addEventListener('click',()=>{
     contrasena.value="";
     document.querySelector('.modal-container').classList.add("modal-container-active")
 });
+
+/*SELECT PROVEEDOR*/
+function limpiarSelect(){
+    const selected= document.querySelector(".selected");
+    selected.innerHTML="Seleccione el rol";
+}
+
+
+const selected= document.querySelector(".selected");
+const optionsContainer= document.querySelector(".options-container");
+
+
+selected.addEventListener("click",()=>{
+    optionsContainer.classList.toggle('active');
+    const optionsList=document.querySelectorAll(".option");
+    optionsList.forEach(o=>{
+        o.addEventListener('click', ()=>{
+            selected.innerHTML=o.querySelector(".label").innerHTML;
+            document.querySelector('#idrol').value=o.getAttribute('data-id');
+            optionsContainer.classList.remove("active");
+        })
+    })
+})
+
+
+function selectBox(){
+    fetch("../../controlador/listar_select_rol.php",{
+        method:"POST"
+    }).then(response => response.text()).then(response => {
+        document.querySelector('.options-container').innerHTML=response;
+    })
+}
+
 
 function ELiminar(id_usuario){
     Swal.fire({

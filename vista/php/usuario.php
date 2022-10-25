@@ -46,12 +46,21 @@ include("layout/header.php");
                             <input maxlength="20" name="contrasena" type="password" id="contrasena" placeholder="Ingrese la contraseña">
                         </div>
                             
-                        <label class="label-titulo" for="activo">Rol:</label>
-                        <div class="form-element radio">
-                            <input checked name="rol" type="radio" id="administrador" value="Administrador">
-                            <label class="label" for="administrador">Administrador</label>
-                            <input name="rol" type="radio" id="cajero" value="Cajero">
-                            <label class="label" for="cajero">Cajero</label>
+                        <input type="hidden" name="idrol" value="" id="idrol">
+
+
+                        <div class="select-container">
+
+                            <div class="select-box">
+                               
+                                <div class="options-container">
+                                                              
+                                </div>
+
+                                <div class="selected">
+                                    Seleccione el rol
+                                </div>
+                            </div>
                         </div>
                             
 
