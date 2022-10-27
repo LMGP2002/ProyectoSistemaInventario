@@ -8,12 +8,14 @@
     foreach($resultado as $data){
 
         echo "<div data-id='".$data['id']."' class='option'>
-                    <input type='radio' class='radio_select' id='".$data['nom']."' name='ciudad'>
-                    <label class='label'>".$data['nom']."</label>
+                    <input type='radio' class='radio_select' id='".$data['id']."' name='idrol'>
+                    <label class='label'>".$data['idrol']."</label>
             </div>";
+        
     } 
-    
+  
 
     
        
+echo($resultado);       
 ?>

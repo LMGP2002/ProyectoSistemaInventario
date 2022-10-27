@@ -45,6 +45,7 @@ include("layout/header.php");
                             <label class="label-titulo" for="nombre">Contraseña:</label>
                             <input maxlength="20" name="contrasena" type="password" id="contrasena" placeholder="Ingrese la contraseña">
                         </div>
+                        
                             
                         <input type="hidden" name="idrol" value="" id="idrol">
 

@@ -65,21 +65,20 @@ body: new FormData(form_registro)
 
 });
 
-
 document.querySelector('#show-modal').addEventListener('click',()=>{
     document.querySelector('.form h2').innerHTML="Agregar usuario";
     document.querySelector('#btnregistrar').textContent ="Agregar";
     document.querySelectorAll("[data-ocultar]").forEach(e => {
         e.classList.add('ocultar');
     });
-    administrador.checked = true;
+
     id_us.value="";
     nom_usuario.value="";
     contrasena.value="";
     document.querySelector('.modal-container').classList.add("modal-container-active")
 });
 
-/*SELECT PROVEEDOR*/
+/*SELECT ROL*/
 function limpiarSelect(){
     const selected= document.querySelector(".selected");
     selected.innerHTML="Seleccione el rol";
