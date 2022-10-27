@@ -48,13 +48,9 @@ include("layout/header.php");
                         </div>
                     
                         <div class="select-container">
-
                             <div class="select-box">
-                               
-                                <div class="options-container">
-                                                              
+                                <div class="options-container">                          
                                 </div>
-
                                 <div class="selected">
                                     Seleccione el rol
                                 </div>

@@ -73,9 +73,9 @@ document.querySelector('#show-modal').addEventListener('click',()=>{
         e.classList.add('ocultar');
     });
     idE.value="";
-    idRol.value="";
     nom_usuario.value="";
     contrasena.value="";
+    idRol.value="";
     limpiarSelect();
     document.querySelector('.modal-container').classList.add("modal-container-active")
 });
@@ -97,7 +97,7 @@ selected.addEventListener("click",()=>{
     optionsList.forEach(o=>{
         o.addEventListener('click', ()=>{
             selected.innerHTML=o.querySelector(".label").innerHTML;
-            document.querySelector('#idRol').value=o.getAttribute('data-id');
+            document.querySelector('#idE').value=o.getAttribute('data-id');
             optionsContainer.classList.remove("active");
         })
     })
