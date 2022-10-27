@@ -35,6 +35,7 @@ include("layout/header.php");
                     <h2>Añadir usuario</h2>
                     <form id="form_registro" method="POST">
                         <input type="hidden" name="id_us" value="" id="id_us">
+                        <input type="hidden" name="idRol" value="" id="idRol">
                                                 
                         <div class="form-element">
                             <label class="label-titulo" for="nombre">Nombre:</label>
@@ -45,11 +46,7 @@ include("layout/header.php");
                             <label class="label-titulo" for="nombre">Contraseña:</label>
                             <input maxlength="20" name="contrasena" type="password" id="contrasena" placeholder="Ingrese la contraseña">
                         </div>
-                        
-                            
-                        <input type="hidden" name="idrol" value="" id="idrol">
-
-
+                    
                         <div class="select-container">
 
                             <div class="select-box">

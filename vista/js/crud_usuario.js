@@ -1,4 +1,5 @@
 ListarUsuarios();
+selectBox();
 function ListarUsuarios(busqueda){
     fetch("../../controlador/listar_usuario.php",{
         method: "POST",
@@ -73,8 +74,10 @@ document.querySelector('#show-modal').addEventListener('click',()=>{
     });
 
     id_us.value="";
+    //idrol.value="";
     nom_usuario.value="";
     contrasena.value="";
+    limpiarSelect();
     document.querySelector('.modal-container').classList.add("modal-container-active")
 });
 
@@ -95,7 +98,7 @@ selected.addEventListener("click",()=>{
     optionsList.forEach(o=>{
         o.addEventListener('click', ()=>{
             selected.innerHTML=o.querySelector(".label").innerHTML;
-            document.querySelector('#idrol').value=o.getAttribute('data-id');
+            document.querySelector('#idRol').value=o.getAttribute('data-id');
             optionsContainer.classList.remove("active");
         })
     })

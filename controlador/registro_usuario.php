@@ -5,6 +5,7 @@ if(isset($_POST)){
     $nomUsuario=$_POST['nom_usuario'];
     $contrasena=$_POST['contrasena'];
     $idRol=$_POST['id_rol'];
+    $id=$_POST['idE'];
     require("../modelo/conexion_Usuario.php");
     if(!empty($idUsuario) and !empty($nomUsuario) and !empty($contrasena)and !empty($idRol)){
        
@@ -18,7 +19,7 @@ if(isset($_POST)){
             $pdo=null;
             echo "ok";
         }else{
-            $query=$pdo->prepare("UPDATE usuario SET id_usuario=:idU, nom_usuario=:nonU, contrasena=:contra, idR=:id_rol WHERE id=:id");
+            $query=$pdo->prepare("UPDATE usuario SET id_usuario=:idU, nom_usuario=:nonU, contrasena=:contra, idR=:id_rol WHERE iid=:id"");
             $query->bindParam(":idU",$idUsuario);
             $query->bindParam(":nonU",$nomUsuario);
             $query->bindParam(":contra",$contrasena);
