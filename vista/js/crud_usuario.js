@@ -16,41 +16,41 @@ fetch("../../controlador/registro_usuario.php", {
 method: "POST",
 body: new FormData(form_registro)
 }).then(response => response.text()).then(response =>{
-   
-    if(response == "vacio"){
-        Swal.fire({
-            icon: 'warning',
-            title: 'Campos vacíos',
-            showConfirmButton: false,
-            timer: 1500
-          })
-          $('.swal2-container').css("z-index",'999999');
-  
-    }else if(response == "ok"){
-        Swal.fire({
-            icon: 'success',
-            title: 'Registrado',
-            showConfirmButton: false,
-            timer: 1500
-          })
-          $('.swal2-container').css("z-index",'999999');
-          form_registro.reset();
-          ListarUsuarios();
-        }else if(response == "modificado"){
-                
+    switch (response) {
+        case 'vacio':
             Swal.fire({
-                icon: 'success',
-                title: 'Modificado',
+                icon: 'warning',
+                title: 'Campos vacíos',
                 showConfirmButton: false,
                 timer: 1500
               })
               $('.swal2-container').css("z-index",'999999');
-              btnregistrar.value = "Registrar";
-              id_us.value = "";
-              form_registro.reset();
-              ListarUsuarios();
-              
-        }else {
+          break;
+        case 'ok':
+            Swal.fire({
+                icon: 'success',
+                title: 'Registrado',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            $('.swal2-container').css("z-index",'999999');
+            form_registro.reset();
+            ListarUsuarios();
+            limpiarSelect();
+            break;
+            case 'modificado':
+                Swal.fire({
+                    icon: 'success',
+                title: 'Modificado',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            $('.swal2-container').css("z-index",'999999');
+            form_registro.reset();
+            limpiarSelect();
+            ListarUsuarios();
+          break;
+        default:
             Swal.fire({
                 icon: 'error',
                 title: 'No registrado',
@@ -59,8 +59,8 @@ body: new FormData(form_registro)
             })
             $('.swal2-container').css("z-index",'999999');
             form_registro.reset();   
-            id_us.value="";
         }
+    
        
 })
 
@@ -72,9 +72,8 @@ document.querySelector('#show-modal').addEventListener('click',()=>{
     document.querySelectorAll("[data-ocultar]").forEach(e => {
         e.classList.add('ocultar');
     });
-
-    id_us.value="";
-    //idrol.value="";
+    idE.value="";
+    idRol.value="";
     nom_usuario.value="";
     contrasena.value="";
     limpiarSelect();

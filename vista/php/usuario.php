@@ -34,16 +34,16 @@ include("layout/header.php");
                 <div class="form">
                     <h2>Añadir usuario</h2>
                     <form id="form_registro" method="POST">
-                        <input type="hidden" name="id_us" value="" id="id_us">
+                        <input type="hidden" name="idE" value="" id="idE">
                         <input type="hidden" name="idRol" value="" id="idRol">
                                                 
                         <div class="form-element">
-                            <label class="label-titulo" for="nombre">Nombre:</label>
-                            <input maxlength="20" name="nom_usuario" type="text" id="nom_usuario" placeholder="Ingrese el nombre">
+                            <label class="label-titulo" for="usuario">Usuario</label>
+                            <input maxlength="20" name="nom_usuario" type="text" id="nom_usuario" placeholder="Ingrese el usuario">
                         </div>
 
                         <div class="form-element">
-                            <label class="label-titulo" for="nombre">Contraseña:</label>
+                            <label class="label-titulo" for="contrasena">Contraseña:</label>
                             <input maxlength="20" name="contrasena" type="password" id="contrasena" placeholder="Ingrese la contraseña">
                         </div>
                     
