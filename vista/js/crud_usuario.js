@@ -113,7 +113,7 @@ function selectBox(){
 }
 
 
-function ELiminar(id_usuario){
+function ELiminar(idE){
     Swal.fire({
         title: 'Atención',
         title: '¿Desea eliminar el usuario?',

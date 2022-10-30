@@ -8,8 +8,8 @@ if(isset($_POST)){
     require("../modelo/conexion_usuario.php");
 
     if(!empty($nombre) and !empty($contra) and !empty($idRol)){
-        if(empty($nombre)){
-            $query=$pdo->prepare("INSERT INTO usuario (nom_usuario,contrasen,id_rol) VALUES (:nom,:contra,:idRol)");
+        if(empty($_POST['idE'])){
+            $query=$pdo->prepare("INSERT INTO usuario (nom_usuario,contrasena,id_rol) VALUES (:nom,:contra,:idRol)");
             $query->bindParam(":nom",$nombre);
             $query->bindParam(":contra",$contra);
             $query->bindParam(":idRol",$idRol);
@@ -17,9 +17,9 @@ if(isset($_POST)){
             $pdo=null;
             echo "ok";
         }else{
-            $query=$pdo->prepare("UPDATE usuario SET id_usuario=:idUs,nom_usuario=:nom,contrasena=:contra, id_rol=:idRol WHERE id_usuario=:id");
+            $query=$pdo->prepare("UPDATE usuario SET nom_usuario=:nom,contra=:contra, id_rol=:idRol WHERE id=:id");
             $query->bindParam(":nom",$nombre);
-            $query->bindParam(":contra",$contrasena);
+            $query->bindParam(":contra",$contra);
             $query->bindParam(":idRol",$idRol);
             $query->bindParam(":id",$id);
             $query->execute();
