@@ -1,6 +1,6 @@
 <?php
     require "../modelo/conexion_usuario.php";
-    $consulta=$pdo->prepare("SELECT id_usuario , nom_usuario, nom FROM `usuario`,`rol` WHERE usuario.id_rol= rol.id;");
+    $consulta=$pdo->prepare("SELECT id_usuario, nom_usuario,nom FROM `usuario`,`rol` WHERE usuario.id_rol= rol.id;");
     $consulta->execute();
     $resultado=$consulta->fetchAll(PDO::FETCH_ASSOC);
 

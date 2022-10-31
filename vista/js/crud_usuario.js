@@ -127,7 +127,7 @@ function ELiminar(idE){
         if (result.isConfirmed) {
             fetch("../../controlador/eliminar_usuario.php",{
                 method: "POST",
-                body: id_usuario
+                body: idE
             }).then(response => response.text()).then(response =>{
                 if(response == "ok"){
                     ListarUsuarios();  
@@ -153,16 +153,16 @@ function ELiminar(idE){
       })
 }
 
-function Editar(id_usuario){
+function Editar(idE){
     document.querySelector('.form h2').innerHTML="Modificar usuario";
     document.querySelector('#btnregistrar').textContent ="Modificar";
     document.querySelector('.modal-container').classList.add("modal-container-active");
 
     fetch("../../controlador/editar_usuario.php", {
         method: "POST",
-        body: id_usuario
+        body: idE
     }).then(response => response.json()).then(response => {
-        id_us.value = response.id_usuario;
+        idE.value = response.idE;
         nom_usuario.value = response.nom_usuario;
         contrasena.value = response.contrasena;
         rol.value = response.rol;

@@ -35,7 +35,7 @@ include("layout/header.php");
                     <h2>Añadir usuario</h2>
                     <form id="form_registro" method="POST">
                         <input type="hidden" name="idE" value="" id="idE">
-                        <input type="hidden" name="idRol" value="" id="idRol">
+                        <input type="hidden" name="id_rol" value="" id="id_rol">
                                                 
                         <div class="form-element">
                             <label class="label-titulo" for="usuario">Usuario</label>
