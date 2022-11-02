@@ -7,6 +7,9 @@ if(isset($_POST)){
     require("../modelo/conexion_usuario.php");
 
     if(!empty($nombre) and !empty($contra) and !empty($idRol)){
+
+
+        
         if(empty($id)){
             $query=$pdo->prepare("INSERT INTO usuario (nom_usuario,contrasena,id_rol) VALUES (:nom,:contra,:idR)");
             $query->bindParam(":nom",$nombre);
@@ -16,7 +19,7 @@ if(isset($_POST)){
             $pdo=null;
             echo "ok";
         }else{
-            $query=$pdo->prepare("UPDATE usuario SET nom_usuario=:nom,contra=:contra, id_rol=:idRol WHERE id=:id");
+            $query=$pdo->prepare("UPDATE usuario SET nom_usuario=:nom,contra=:contra, id_rol=:idRol WHERE idE=:id");
             $query->bindParam(":nom",$nombre);
             $query->bindParam(":contra",$contra);
             $query->bindParam(":idR",$idRol);

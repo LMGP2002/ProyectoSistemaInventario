@@ -23,8 +23,10 @@ body: new FormData(form_registro)
                 title: 'Campos vacíos',
                 showConfirmButton: false,
                 timer: 1500
+                
               })
               $('.swal2-container').css("z-index",'999999');
+           
           break;
         case 'ok':
             Swal.fire({
@@ -56,6 +58,7 @@ body: new FormData(form_registro)
                 title: 'No registrado',
                 showConfirmButton: false,
                 timer: 1500    
+              
             })
             $('.swal2-container').css("z-index",'999999');
             form_registro.reset();   
@@ -67,7 +70,7 @@ body: new FormData(form_registro)
 });
 
 document.querySelector('#show-modal').addEventListener('click',()=>{
-    document.querySelector('.form h2').innerHTML="Agregar usuario";
+    document.querySelector('.form h2').innerHTML="Agregar Usuario";
     document.querySelector('#btnregistrar').textContent ="Agregar";
     document.querySelectorAll("[data-ocultar]").forEach(e => {
         e.classList.add('ocultar');
@@ -75,7 +78,7 @@ document.querySelector('#show-modal').addEventListener('click',()=>{
     idE.value="";
     nom_usuario.value="";
     contrasena.value="";
-    idRol.value="";
+    id_rol.value="";
     limpiarSelect();
     document.querySelector('.modal-container').classList.add("modal-container-active")
 });
@@ -89,6 +92,7 @@ function limpiarSelect(){
 
 const selected= document.querySelector(".selected");
 const optionsContainer= document.querySelector(".options-container");
+  
 
 
 selected.addEventListener("click",()=>{
@@ -97,7 +101,7 @@ selected.addEventListener("click",()=>{
     optionsList.forEach(o=>{
         o.addEventListener('click', ()=>{
             selected.innerHTML=o.querySelector(".label").innerHTML;
-            document.querySelector('#idE').value=o.getAttribute('data-id');
+            document.querySelector('#id_rol').value=o.getAttribute('data-id');
             optionsContainer.classList.remove("active");
         })
     })

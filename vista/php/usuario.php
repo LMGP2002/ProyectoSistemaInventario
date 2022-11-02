@@ -38,7 +38,7 @@ include("layout/header.php");
                         <input type="hidden" name="id_rol" value="" id="id_rol">
                                                 
                         <div class="form-element">
-                            <label class="label-titulo" for="usuario">Usuario</label>
+                            <label class="label-titulo" for="nom_usuario">Usuario</label>
                             <input maxlength="20" name="nom_usuario" type="text" id="nom_usuario" placeholder="Ingrese el usuario">
                         </div>
 
