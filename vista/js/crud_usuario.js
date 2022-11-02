@@ -116,11 +116,10 @@ function selectBox(){
     })
 }
 
-
-function ELiminar(idE){
+function eliminar(id){
     Swal.fire({
         title: 'Atención',
-        title: '¿Desea eliminar el usuario?',
+        text: "¿Desea eliminar el usuario?",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
@@ -129,48 +128,61 @@ function ELiminar(idE){
         cancelButtonText: 'Cancelar'
       }).then((result) => {
         if (result.isConfirmed) {
-            fetch("../../controlador/eliminar_usuario.php",{
-                method: "POST",
-                body: idE
-            }).then(response => response.text()).then(response =>{
-                if(response == "ok"){
-                    ListarUsuarios();  
+
+        fetch("../../controlador/eliminar_usuario.php",{
+                method:"POST",
+                body: id
+            }).then(response => response.text()).then(response => {
+                if(response=="ok"){
+                    ListarUsuarios();
                     Swal.fire({
                         icon: 'success',
                         title: 'Usuario eliminado',
                         showConfirmButton: false,
-                        timer: 1500
-                      })
-                    }else{
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Usuario no eliminado',
-                            showConfirmButton: false,
-                            timer: 3000    
-                        })
-    
-                    }
-               
+                        timer: 1500    
+                    })
+                }else{
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'usuario no eliminado',
+                        text: "Puede tener relación con algún registro",
+                        showConfirmButton: false,
+                        timer: 3000   
+                    })
+                    
+
+                }
+
             })
-        
+
+          
         }
       })
 }
 
-function Editar(idE){
+function editar(id){
     document.querySelector('.form h2').innerHTML="Modificar usuario";
     document.querySelector('#btnregistrar').textContent ="Modificar";
     document.querySelector('.modal-container').classList.add("modal-container-active");
 
-    fetch("../../controlador/editar_usuario.php", {
-        method: "POST",
-        body: idE
+    fetch("../../controlador/editar_proveedor.php",{
+        method:"POST",
+        body: id
     }).then(response => response.json()).then(response => {
-        idE.value = response.idE;
-        nom_usuario.value = response.nom_usuario;
-        contrasena.value = response.contrasena;
-        rol.value = response.rol;
-        btnregistrar.value = "Actualizar";
+        idE.value=response.id;
+        nit.value=response.nit;
+        nombre.value=response.nom_prov;
+        direccion.value=response.direc_prov;
+        telefono.value=response.tel_prov;
+        idCiudad.value=response.id_ciudad;
+        const optionsList=document.querySelectorAll(".option");
+        const selected= document.querySelector(".selected");
+
+        optionsList.forEach(e=>{
+            if(e.getAttribute('data-id')==idCiudad.value){
+                selected.innerHTML=e.querySelector(".label").innerHTML;
+            }
+        });
     })
 }
 

@@ -1,17 +1,17 @@
 <?php
     require "../modelo/conexion_usuario.php";
-    $consulta=$pdo->prepare("SELECT id_usuario, nom_usuario,nom FROM `usuario`,`rol` WHERE usuario.id_rol= rol.id;");
+    $consulta=$pdo->prepare("SELECT usuario.id_usuario as id,usuario.nom_usuario as nomb,rol.nom as Nrol FROM `usuario` INNER JOIN rol on rol.id=usuario.id_rol;");
     $consulta->execute();
     $resultado=$consulta->fetchAll(PDO::FETCH_ASSOC);
 
     foreach($resultado as $data){
         echo "<tr>
-            <td>".$data['id_usuario']."</td>
-            <td>".$data['nom_usuario']."</td>
-            <td>".$data['nom']."</td>
+            <td>".$data['id']."</td>
+            <td>".$data['nomb']."</td>
+            <td>".$data['Nrol']."</td>
             <td>
-                <button type='button' onClick=editar('".$data['id_usuario']."')><i class='fa-solid fa-pen-to-square'></i></button>
-                <button type='button' onClick=eliminar('".$data['id_usuario']."')><i class='fa-solid fa-trash'></i></button>
+                <button type='button' onClick=editar('".$data['id']."')><i class='fa-solid fa-pen-to-square'></i></button>
+                <button type='button' onClick=eliminar('".$data['id']."')><i class='fa-solid fa-trash'></i></button>
             </td>
         </tr>";
     }
