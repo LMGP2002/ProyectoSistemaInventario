@@ -55,7 +55,7 @@ body: new FormData(form_registro)
         default:
             Swal.fire({
                 icon: 'error',
-                title: 'No registrado',
+                title: 'El usuario ya existe',
                 showConfirmButton: false,
                 timer: 1500    
               
