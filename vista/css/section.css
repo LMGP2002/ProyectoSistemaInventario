@@ -355,3 +355,19 @@ tr:hover td{
 .select-box label{
     cursor: pointer;
 }
+
+/*Boton cerrar sesión*/
+.logoutBtn{
+    height: 60px;
+    width: 60px;
+    border-radius: 60px;
+    background-image: url('');
+    background-color: #bc9667;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, .2);
+    background-size: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+}

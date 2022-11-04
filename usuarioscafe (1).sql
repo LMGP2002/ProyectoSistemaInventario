@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-11-2022 a las 04:34:25
+-- Tiempo de generación: 04-11-2022 a las 04:43:06
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 8.1.10
 
@@ -20,6 +20,41 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `usuarioscafe`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `permiso`
+--
+
+CREATE TABLE `permiso` (
+  `id` int(11) NOT NULL,
+  `id_rol` int(11) NOT NULL,
+  `seccion` varchar(15) NOT NULL,
+  `eliminar` varchar(15) NOT NULL,
+  `registrar` varchar(15) NOT NULL,
+  `editar` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `rol`
+--
+
+CREATE TABLE `rol` (
+  `id` int(11) NOT NULL,
+  `nom` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `rol`
+--
+
+INSERT INTO `rol` (`id`, `nom`) VALUES
+(1, 'Administrador'),
+(2, 'Cajero'),
+(3, 'Gerente');
 
 -- --------------------------------------------------------
 
@@ -41,11 +76,24 @@ CREATE TABLE `usuario` (
 INSERT INTO `usuario` (`id_usuario`, `nom_usuario`, `contrasena`, `id_rol`) VALUES
 (5, 'miguel', '29bfe372865737fe2bfcfd3618b1da7d', 1),
 (6, 'luis', '502ff82f7f1f8218dd41201fe4353687', 2),
-(12, 'laura', 'laura', 2);
+(13, 'laura', '680e89809965ec41e64dc7e447f175ab', 2);
 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `permiso`
+--
+ALTER TABLE `permiso`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_id_roll` (`id_rol`);
+
+--
+-- Indices de la tabla `rol`
+--
+ALTER TABLE `rol`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `usuario`
@@ -60,14 +108,32 @@ ALTER TABLE `usuario`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `permiso`
+--
+ALTER TABLE `permiso`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `rol`
+--
+ALTER TABLE `rol`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `permiso`
+--
+ALTER TABLE `permiso`
+  ADD CONSTRAINT `fk_id_roll` FOREIGN KEY (`id_rol`) REFERENCES `rol` (`id`);
 
 --
 -- Filtros para la tabla `usuario`
