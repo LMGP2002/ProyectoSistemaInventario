@@ -1,4 +1,5 @@
 <?php
+include("../../controlador/validarSesion.php");
 include("layout/header.php");
 ?>
 

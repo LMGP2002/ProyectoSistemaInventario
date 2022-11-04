@@ -1,4 +1,6 @@
+
 <?php
+include("../../controlador/validarSesion.php");
 include("layout/header.php");
 
 ?>
@@ -9,7 +11,8 @@ include("layout/header.php");
                     Sistema de Inventario
                 </h1>
                 <p>Villa Monguí Café Arte</p>
-                <a href="#" class="btn">Ingresar ahora</a>
+                <p id="nomUser"></p>
+                <a href="./inventario.php" class="btn">Ver inventario</a>
             </div>
     
             <div class="inicio-img">
@@ -19,6 +22,8 @@ include("layout/header.php");
 </main>
 
 <script src="../js/estilos.js"></script>
+<script src="../js/validarSesion.js"></script>
+
 
 </body>
 </html>
