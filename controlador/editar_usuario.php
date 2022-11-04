@@ -1,5 +1,5 @@
 <?php
-require "../modelo/conexion_usuario.php";
+require("../modelo/conexionUsuarios.php");
 
 $data = file_get_contents("php://input");
 $query = $pdo->prepare("SELECT * FROM usuario WHERE id_usuario = :id");

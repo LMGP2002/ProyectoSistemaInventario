@@ -4,7 +4,7 @@ if(isset($_POST)){
     $nombre=$_POST['nom_usuario'];
     $contra=$_POST['contrasena'];
     $idRol=$_POST['id_rol'];
-    require("../modelo/conexion_usuario.php");
+    require("../modelo/conexionUsuarios.php");
 
     if(!empty($nombre) and !empty($contra) and !empty($idRol)){
 

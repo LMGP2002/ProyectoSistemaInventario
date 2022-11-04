@@ -26,7 +26,7 @@ body: new FormData(form_registro)
                 
               })
               $('.swal2-container').css("z-index",'999999');
-           
+              limpiarSelect();
           break;
         case 'ok':
             Swal.fire({
@@ -62,6 +62,7 @@ body: new FormData(form_registro)
             })
             $('.swal2-container').css("z-index",'999999');
             form_registro.reset();   
+            limpiarSelect();
         }
     
        

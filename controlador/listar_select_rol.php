@@ -1,5 +1,5 @@
 <?php
-    require "../modelo/conexion_usuario.php";
+    require("../modelo/conexionUsuarios.php");
     
     $consulta=$pdo->prepare("SELECT id,nom FROM `rol`");
     $consulta->execute();
