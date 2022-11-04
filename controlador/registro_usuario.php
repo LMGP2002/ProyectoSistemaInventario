@@ -2,7 +2,7 @@
 if(isset($_POST)){
     $id=$_POST['idE'];
     $nombre=$_POST['nom_usuario'];
-    $contra=$_POST['contrasena'];
+    $contra=md5($_POST['contrasena']);
     $idRol=$_POST['id_rol'];
     require("../modelo/conexionUsuarios.php");
 
