@@ -361,8 +361,8 @@ tr:hover td{
     height: 60px;
     width: 60px;
     border-radius: 60px;
-    background-image: url('');
-    background-color: #bc9667;
+    background-image: url('../assets/logout.svg');
+    background-color: #cfa26b;
     box-shadow: 0 3px 12px rgba(0, 0, 0, .2);
     background-size: 50%;
     background-position: center;
@@ -370,4 +370,10 @@ tr:hover td{
     position: fixed;
     bottom: 30px;
     right: 30px;
+    transition:background-color .3s ease-in-out ;
+}
+
+
+.logoutBtn:hover{
+    background-color: #eecb9e;
 }

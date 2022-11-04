@@ -18,9 +18,9 @@ include("layout/header.php");
             <div class="inicio-img">
                 <img src="../assets/main.png" alt="Café Arte">
             </div>
+            <a href="../../controlador/logout.php" class="logoutBtn"></a>
         
 </section>
-<a href="#" class="logoutBtn"></a>
 </main>
 <script src="../js/estilos.js"></script>
 <script src="../js/validarSesion.js"></script>

@@ -89,7 +89,7 @@
 
                 <li class="nav-link">
                     <a href="../php/usuario.php">
-                        <i class='bx bx-user-plus icon'></i>
+                        <i class='bx bx-user icon'></i>
                             <span class="text nav-text">Usuarios</span>
                         </a>
                     </li>
@@ -98,13 +98,7 @@
            
 
             <div class="bottom-content">
-                <li class="">
-                    <a href="../../controlador/logout.php">
-                        <i class='bx bx-log-out icon' ></i>
-                        <span class="text nav-text">Logout</span>
-                    </a>
-                </li>
-
+                
                 <li class="mode">
                     <div class="sun-moon">
                         <i class='bx bx-moon icon moon'></i>

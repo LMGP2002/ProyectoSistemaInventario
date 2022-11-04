@@ -35,6 +35,7 @@ include("layout/header.php");
                 </table>
             </div>
         </div>
+        <a href="../../controlador/logout.php" class="logoutBtn"></a>
         
     </main>
 

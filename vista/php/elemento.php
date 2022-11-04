@@ -5,7 +5,7 @@ include("layout/header.php");
 
         <div class="table">
             <div class="table_header">
-                <h3 class="title" data-dark>Elementos (Productos-Insumos)</h3>
+                <h3 class="title" data-dark>Elementos</h3>
                 <div>
                     <input class="search" placeholder="Elemento">
                     <button class="add_new" id="show-modal">Añadir elemento</button>
@@ -75,6 +75,7 @@ include("layout/header.php");
             </div>
 
         </div>
+        <a href="../../controlador/logout.php" class="logoutBtn"></a>
   
     </main>
 

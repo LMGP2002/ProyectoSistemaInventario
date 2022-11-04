@@ -113,6 +113,7 @@ include("layout/header.php");
             </div>
 
         </div>
+        <a href="../../controlador/logout.php" class="logoutBtn"></a>
   
     </main>
 
