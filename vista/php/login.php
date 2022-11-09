@@ -13,7 +13,7 @@
   </head>
   <body>
     <section class="form my-3 mx-5">
-        <div class="container">
+        <div class="container contenedor">
             <div class="row no-gutters">
                 <div class="col-lg-5">
                     <img src="../assets/login.jpg" class="img-fluid" alt="Café Villa Mongui">
@@ -29,7 +29,7 @@
                                     <input required name="username" type="text" placeholder="Username" class="form-control my-3 p-4">
                                 </div>
                             </div>
-                            <div class="form-row">
+                            <div class="form-row0">
                                 <div class="col-lg-7">
                                     <input required name="password" type="password" placeholder="Contraseña" class="form-control my-3 p-4 ">
                                 </div>
