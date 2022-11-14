@@ -2,6 +2,23 @@
 include("../../controlador/validarSesion.php");
 include("layout/header.php");
 ?>
+<form action=""  methop="POST"> 
+        <div class="row">
+            <div class="col-md-3">
+                 <div class="form-group">
+                    <label for="min"data-dark>Desde</label>
+                    <input type ="date" value="<?php echo date('y-m-d');?>" name ="desde" id="desde">
+                 </div>
+             </div>  
+             <div class="col-md-3">
+                 <div class="form-group">
+                    <label for="min"data-dark>Hasta</label>
+                    <input type ="date" value="<?php echo date('y-m-d');?>" name ="hasta" id="hasta">
+                 </div>
+             </div> 
+       </div>
+</form>
+
 <div class="table">
             <div class="table_header">
                 <h3 class="title" data-dark>Reportes</h3>
@@ -19,7 +36,7 @@ include("layout/header.php");
                     <tbody>
                     <tr>
                         <th><a  href="repor.php" target="_blank"><img src="../assets/pdf.png" /></a></th>
-                        <th><a  href="repor.php" target="_blank"><img src="../assets/pdf.png" /></a></th>
+                        <th><a  href="reporProduc.php" target="_blank"><img src="../assets/pdf.png" /></a></th>
                     </tr>
                     </tbody>           
                 </table>
@@ -27,7 +44,6 @@ include("layout/header.php");
         <a href="../../controlador/logout.php" class="logoutBtn"></a>
   
     </main>
-    
     
 <?php
 
