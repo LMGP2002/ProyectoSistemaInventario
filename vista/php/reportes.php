@@ -2,7 +2,7 @@
 include("../../controlador/validarSesion.php");
 include("layout/header.php");
 ?>
-<form action=""  methop="POST"> 
+<form action="reporProduc.php"  method="POST"> 
         <div class="row">
             <div class="col-md-3">
                  <div class="form-group">
@@ -15,6 +15,7 @@ include("layout/header.php");
                     <label for="min"data-dark>Hasta</label>
                     <input type ="date" value="<?php echo date('y-m-d');?>" name ="hasta" id="hasta">
                  </div>
+                 <button type="submit">
              </div> 
        </div>
 </form>

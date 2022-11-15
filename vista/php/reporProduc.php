@@ -16,8 +16,8 @@ function Header()
     $this->Cell(30,25,'Listado de productos',0,0,'C');
     // Salto de línea
     $this->Ln(30);
-    $this-> Cell(10,6,'Producto',1,0,'c',0);    
-    $this-> Cell(30,6,'Proveedor',1,0,'c',0); 
+    $this-> Cell(18,6,'Producto',1,0,'c',0);    
+    $this-> Cell(35,6,'Proveedor',1,0,'c',0); 
     $this->Cell(30,6,'Fecha de ingreso',1,0,'c',0); 
     $this-> Cell(30,6,'Fecha de salida',1,0,'c',0); 
     $this-> Cell(30,6,'precio de compra',1,0,'c',0); 
@@ -37,6 +37,19 @@ function Footer()
 }
 }
 
+$hasta;
+$desde;
+
+if (isset($_POST["desde"]) && isset($_POST["hasta"]) ) {
+
+   $desde=$_POST["desde"] ;
+   $hasta=$_POST["hasta"] ;
+   
+
+
+}
+
+
 
     require "../../modelo/conexion.php";
    
@@ -44,10 +57,15 @@ function Footer()
   WHERE elemento.codigo= entrada.codigo_elemento and elemento.codigo=salida.codigo_elemento and proveedor.id=entrada.id_prov and 
   salida.fecha_salida BETWEEN'$desde' AND '$hasta' and entrada.fecha_entrada BETWEEN '$desde' AND '$hasta';";
   $resultado= $pdo-> query($consulta);
+  // Creación del objeto de la clase heredada
+$pdf = new PDF();
+$pdf->AliasNbPages();
+$pdf->AddPage();
+$pdf->SetFont('Times','',12);
   while ($mostrar= $resultado->fetch(PDO::FETCH_ASSOC)){
 
-    $pdf-> Cell(10,6,$mostrar['nombre'],1,0,'c',0);    
-    $pdf-> Cell(30,6,$mostrar['nom_prov'],1,0,'c',0); 
+    $pdf-> Cell(18,6,$mostrar['nombre'],1,0,'c',0);    
+    $pdf-> Cell(35,6,$mostrar['nom_prov'],1,0,'c',0); 
     $pdf-> Cell(30,6,$mostrar['fecha_entrada'],1,0,'c',0); 
     $pdf-> Cell(30,6,$mostrar['fecha_salida'],1,0,'c',0); 
     $pdf-> Cell(30,6,$mostrar['precio_comp'],1,0,'c',0); 
@@ -56,11 +74,7 @@ function Footer()
 }
    
 
-// Creación del objeto de la clase heredada
-$pdf = new PDF();
-$pdf->AliasNbPages();
-$pdf->AddPage();
-$pdf->SetFont('Times','',12);
+
 
 
 $pdf->Output();
