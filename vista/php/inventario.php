@@ -8,7 +8,7 @@ include("layout/header.php");
                 <h3 class="title" data-dark>Inventario</h3>
                 <div>
                     <input class="search" placeholder="Elemento">
-                    
+                    <a  href= "reportes.php" >Reportes</a>
                 </div>
             </div>
 
