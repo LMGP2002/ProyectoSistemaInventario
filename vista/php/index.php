@@ -9,7 +9,6 @@ include("layout/header.php");
                 <h1>
                     Sistema de Inventario
                 </h1>
-                <p>Villa Monguí Café Arte</p>
                 <p id="nomUser"></p>
                 <a href="./inventario.php" class="btn">Ver inventario</a>
 
@@ -24,6 +23,7 @@ include("layout/header.php");
 </main>
 <script src="../js/estilos.js"></script>
 <script src="../js/validarSesion.js"></script>
+<script src="../js/validarSeccion.js"></script>
 
 </body>
 </html>

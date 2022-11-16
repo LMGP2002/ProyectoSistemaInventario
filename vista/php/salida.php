@@ -45,13 +45,13 @@ include("layout/header.php");
                         <input type="hidden" name="idE" value="" id="idE">
                         <input type="hidden" name="idElemento" value="" id="idElemento">
                         
-                        <div  class="select-container">
+                        <div   class="select-container">
                             <div class="select-box">
                                 <div data-elemento-container class="options-container">
                                                               
                                 </div>
 
-                                <div data-elemento-selected class="selected">
+                                <div data-stock data-categoria data-elemento data-elemento-selected class="selected">
                                     Seleccione el elemento
                                 </div>
                             </div>
@@ -67,7 +67,7 @@ include("layout/header.php");
                             <input data-cant class="inputN" name="cantidad" type="number" id="cantidad" placeholder="Ingrese la cantidad de salida">
                         </div>
                         <div class="form-element">
-                            <label class="label-titulo label-titulo-precio ocultar" for="precio">Precio de venta:</label>
+                            <label class="label-titulo label-titulo-precio ocultar" for="precio">Precio unitario:</label>
                             <input data-prec class="inputN" name="precio" type="hidden" id="precio" placeholder="Ingrese el precio de venta del producto">
                         </div>
                         

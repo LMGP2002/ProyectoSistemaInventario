@@ -5,12 +5,25 @@ if(isset($_POST)){
     $fecha=$_POST['fecha'];
     $cantidad=$_POST['cantidad'];
     $precio=$_POST['precio'];
+    $stock=$_POST['stock'];
+    $bandera=$_POST['bandera'];
     require("../modelo/conexion.php");
     if(!empty($idElemento) and !empty($fecha) and !empty($cantidad) and !empty($precio)){
         
-        $precio="$".$precio;
+        $cantidad=abs($_POST['cantidad']);
+        $validarPrecio=$_POST['validarPrecio'];
 
-        if(empty($id)){
+
+        if($validarPrecio=='Producto'){
+            $precio="$".$precio;
+        }else{
+            $precio='-';
+        }
+
+       
+        if($cantidad>$stock){
+            echo "stock";
+        }else if(empty($id)){
             $query=$pdo->prepare("INSERT INTO salida (fecha_salida,codigo_elemento,cant_elem_sal,precio_venta) VALUES (:fech,:idEle,:cant,:pre)");
             $query->bindParam(":fech",$fecha);
             $query->bindParam(":idEle",$idElemento);

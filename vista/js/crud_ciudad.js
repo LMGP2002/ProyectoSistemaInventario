@@ -41,12 +41,13 @@ btnregistrar.addEventListener('click',()=>{
                         icon: 'success',
                     title: 'Modificado',
                     showConfirmButton: false,
-                    timer: 1500
+                    timer: 900
                 })
                 $('.swal2-container').css("z-index",'999999');
                 form_registro.reset();
                 idE.value="";
                 listarCiudad();
+                document.querySelector('.modal-container').classList.remove("modal-container-active");
               break;
             default:
                 Swal.fire({
@@ -94,7 +95,7 @@ function eliminar(id){
                         icon: 'success',
                         title: 'Ciudad eliminada',
                         showConfirmButton: false,
-                        timer: 1500    
+                        timer: 800    
                     })
                 }else{
                     Swal.fire({

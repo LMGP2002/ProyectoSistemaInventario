@@ -45,12 +45,13 @@ body: new FormData(form_registro)
                     icon: 'success',
                 title: 'Modificado',
                 showConfirmButton: false,
-                timer: 1500
+                timer: 900
             })
             $('.swal2-container').css("z-index",'999999');
             form_registro.reset();
             limpiarSelect();
             ListarUsuarios();
+            document.querySelector('.modal-container').classList.remove("modal-container-active");
           break;
         default:
             Swal.fire({
@@ -140,7 +141,7 @@ function eliminar(id){
                         icon: 'success',
                         title: 'Usuario eliminado',
                         showConfirmButton: false,
-                        timer: 1500    
+                        timer: 800    
                     })
                 }else{
                     Swal.fire({

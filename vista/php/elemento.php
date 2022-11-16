@@ -8,7 +8,7 @@ include("layout/header.php");
                 <h3 class="title" data-dark>Elementos</h3>
                 <div>
                     <input class="search" placeholder="Elemento">
-                    <button class="add_new" id="show-modal">Añadir elemento</button>
+                    <button style="display:none;" class="add_new" id="show-modal">Añadir elemento</button>
                 </div>
             </div>
 
@@ -21,7 +21,7 @@ include("layout/header.php");
                             <th>Categoria</th>
                             <th>Descripción</th>
                             <th>Estado</th>
-                            <th>Acciones</th>
+                            <th data-acciones>Acciones</th>
                         </tr>
                     </thead>
 

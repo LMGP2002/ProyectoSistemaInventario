@@ -21,10 +21,14 @@ function onInputChange(){
 }
 
 //Modal
+let closeBtn=document.querySelector('.modal .close-btn');
 
-document.querySelector('.modal .close-btn').addEventListener('click',()=>{
-    document.querySelector('.modal-container').classList.remove("modal-container-active")
-});
+if(closeBtn!=null){
+    closeBtn.addEventListener('click',()=>{
+        document.querySelector('.modal-container').classList.remove("modal-container-active")
+    });
+
+}
 
 
 

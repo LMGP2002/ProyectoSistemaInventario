@@ -45,13 +45,14 @@ btnregistrar.addEventListener('click',()=>{
                         icon: 'success',
                     title: 'Modificado',
                     showConfirmButton: false,
-                    timer: 1500
+                    timer: 900
                 })
                 $('.swal2-container').css("z-index",'999999');
                 form_registro.reset();
                 listarEntradas();
                 limpiarSelectE();
                 limpiarSelectP(); 
+                document.querySelector('.modal-container').classList.remove("modal-container-active");
               break;
             default:
                 Swal.fire({
@@ -184,14 +185,14 @@ function eliminar(id){
                     listarEntradas();
                     Swal.fire({
                         icon: 'success',
-                        title: 'Elemento eliminado',
+                        title: 'Entrada eliminada',
                         showConfirmButton: false,
-                        timer: 1500    
+                        timer: 800    
                     })
                 }else{
                     Swal.fire({
                         icon: 'error',
-                        title: 'Elemento no eliminado',
+                        title: 'Entrada no eliminada',
                         showConfirmButton: false,
                         timer: 1500    
                     })

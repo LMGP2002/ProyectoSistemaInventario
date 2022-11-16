@@ -9,11 +9,40 @@ function listarSalidas(){
     })
 }
 btnregistrar.addEventListener('click',()=>{
+
+    let bandera=document.querySelector('.form h2').textContent;
+    let formSalida=new FormData(form_registro);
+    let elemento=document.querySelector('[data-stock]');
+    let stock=parseInt(elemento.getAttribute('data-stock'));
+    let validarPrecio=elemento.getAttribute('data-categoria');
+  
+    console.log(stock);
+    
+    if(bandera=='Modificar salida' && elemento.getAttribute('data-elemento')==elemento.textContent){
+        console.log(cantidad.getAttribute('data-cant'));
+        stock+=parseInt(cantidad.getAttribute('data-cant'));
+    }
+    
+    console.log(stock);
+    
+    
+
+
+    formSalida.append('stock',stock);
+    
+    formSalida.append('bandera',bandera);
+    
+    formSalida.append('validarPrecio',validarPrecio);
+    
+   
+
+    
+
     fetch("../../controlador/registro_salida.php",{
         method:"POST",
-        body:new FormData(form_registro)
+        body:formSalida
     }).then(response => response.text()).then(response => {
-
+        
         switch (response) {
             case 'vacio':
                 Swal.fire({
@@ -24,6 +53,16 @@ btnregistrar.addEventListener('click',()=>{
                   })
                   $('.swal2-container').css("z-index",'999999');
               break;
+
+            case 'stock':
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Cantidad no disponible',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
+                  $('.swal2-container').css("z-index",'999999');
+                break;
             case 'ok':
                 Swal.fire({
                     icon: 'success',
@@ -35,18 +74,21 @@ btnregistrar.addEventListener('click',()=>{
                 form_registro.reset();
                 listarSalidas();
                 limpiarSelectE()
+                selectElemento();
                 break;
                 case 'modificado':
                     Swal.fire({
                         icon: 'success',
                     title: 'Modificado',
                     showConfirmButton: false,
-                    timer: 1500
+                    timer: 900
                 })
                 $('.swal2-container').css("z-index",'999999');
                 form_registro.reset();
                 listarSalidas();
                 limpiarSelectE();
+                selectElemento();
+                document.querySelector('.modal-container').classList.remove("modal-container-active");
               break;
             default:
                 Swal.fire({
@@ -74,6 +116,7 @@ document.querySelector('#show-modal').addEventListener('click',()=>{
     fecha.value="";
  
     limpiarSelectE();
+    selectElemento();
     document.querySelector('.modal-container').classList.add("modal-container-active")
 });
 
@@ -94,6 +137,8 @@ selected.addEventListener("click",()=>{
     optionsList.forEach(o=>{
         o.addEventListener('click', ()=>{
             selected.innerHTML=o.querySelector(".label").innerHTML;
+            selected.setAttribute('data-stock', o.getAttribute("data-cantidad")); 
+            selected.setAttribute('data-categoria', o.getAttribute("data-categoria")); 
             document.querySelector('#idElemento').value=o.getAttribute('data-id');
 
             if(o.getAttribute("data-categoria")=='Insumo'){
@@ -106,6 +151,7 @@ selected.addEventListener("click",()=>{
                 tituloPrecio.classList.remove('ocultar');
 
             }
+
             
             optionsContainer.classList.remove("active");
         })
@@ -113,7 +159,7 @@ selected.addEventListener("click",()=>{
 })
 
 function selectElemento(){
-    fetch("../../controlador/listar_select_elemento.php",{
+    fetch("../../controlador/listar_select_entrada.php",{
         method:"POST"
     }).then(response => response.text()).then(response => {
         optionsContainer.innerHTML=response;
@@ -160,7 +206,7 @@ function eliminar(id){
                         icon: 'success',
                         title: 'Salida eliminada',
                         showConfirmButton: false,
-                        timer: 1500    
+                        timer: 800    
                     })
                 }else{
                     Swal.fire({
@@ -193,15 +239,34 @@ function editar(id){
 
         const optionsList=document.querySelectorAll(".option");
         const selected= document.querySelector(".selected");
+        const precioInput=document.querySelector('#precio');
+        const tituloPrecio=document.querySelector('.label-titulo-precio');
 
         optionsList.forEach(e=>{
             if(e.getAttribute('data-id')==idElemento.value){
                 selected.innerHTML=e.querySelector(".label").innerHTML;
+                selected.setAttribute('data-stock', e.getAttribute("data-cantidad")); 
+                selected.setAttribute('data-categoria', e.getAttribute("data-categoria")); 
+                selected.setAttribute('data-elemento', e.querySelector(".label").innerHTML); 
+                if(selected.getAttribute("data-categoria")=='Insumo'){
+                    precioInput.type='hidden';
+                    tituloPrecio.classList.add('ocultar');
+                    precioInput.value='00';
+                }else{
+                    precioInput.type='number';
+                    tituloPrecio.classList.remove('ocultar');
+    
+                }
             }
+
+            
         });
 
         fecha.value=response.fecha_salida;
         cantidad.value=response.cant_elem_sal;
-        precio.value=response.precio_venta.replace("$", "");
+        if(selected.getAttribute("data-categoria")=='Producto'){
+        precio.value=response.precio_venta.replace("$", "")
+        cantidad.setAttribute('data-cant',response.cant_elem_sal);
+        }
     })
 }

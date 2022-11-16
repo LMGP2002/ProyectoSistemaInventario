@@ -35,45 +35,45 @@
         </header>
 
         <div class="menu-bar">
-            <div class="menu">
+            <div style="visibility:hidden;" class="menu">
 
                 <ul class="menu-links">
-                    <li class="nav-link">
+                    <li  class="nav-link">
                         <a href="index.php">
                             <i class='bx bx-home-alt icon' ></i>
                             <span class="text nav-text">Inicio</span>
                         </a>
                     </li>
 
-                    <li class="nav-link">
+                    <li data-seccion='Elemento' class="nav-link">
                         <a href="../php/elemento.php">
                             <i class='bx bx-coffee-togo icon' ></i>
                             <span class="text nav-text">Elementos</span>
                         </a>
                     </li>
 
-                    <li class="nav-link">
+                    <li data-seccion='Ciudad' class="nav-link">
                         <a href="../php/ciudad.php">
                             <i class='bx bx-buildings icon'></i>
                             <span class="text nav-text">Ciudades</span>
                         </a>
                     </li>
 
-                    <li class="nav-link">
+                    <li data-seccion='Proveedor' class="nav-link">
                         <a href="../php/proveedor.php">
                             <i class='bx bx-package icon'></i>
                             <span class="text nav-text">Proveedores</span>
                         </a>
                     </li>
 
-                    <li class="nav-link">
+                    <li data-seccion='Entrada' class="nav-link">
                         <a href="../php/entrada.php">
                             <i class='bx bx-log-in-circle icon'></i>
                             <span class="text nav-text">Entradas</span>
                         </a>
                     </li>
 
-                    <li class="nav-link">
+                    <li data-seccion='Salida' class="nav-link">
                     <a href="../php/salida.php">
                         <i class='bx bx-log-out-circle icon'></i>
                             <span class="text nav-text">Salidas</span>

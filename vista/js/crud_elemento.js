@@ -31,11 +31,12 @@ btnregistrar.addEventListener('click',()=>{
                         icon: 'success',
                     title: 'Modificado',
                     showConfirmButton: false,
-                    timer: 1500
+                    timer: 900
                 })
                 $('.swal2-container').css("z-index",'999999');
                 form_registro.reset();
                 listarElementos();
+                document.querySelector('.modal-container').classList.remove("modal-container-active");
               break;
             default:
                 Swal.fire({
@@ -51,11 +52,53 @@ btnregistrar.addEventListener('click',()=>{
 })
 
 function listarElementos(){
-    fetch("../../controlador/listar_elemento.php",{
-        method:"POST"
-    }).then(response => response.text()).then(response => {
-        table_body.innerHTML=response;
+
+    let interactuar;
+    let registrar;
+    let acciones=document.querySelector('[data-acciones]');
+    let showM=document.querySelector('#show-modal');
+    fetch("../../controlador/validarSeccion.php")
+    .then(resp=>resp.json())
+    .then(data=>{
+
+        data.forEach(el=>{
+            if(el.seccion=='Elemento'){
+                interactuar=el.interactuar;
+                registrar=el.registrar;
+            }
+        })
+
+        let datos = new FormData();
+        datos.append('int', interactuar);
+
+        fetch("../../controlador/listar_elemento.php",{
+            method:"POST",
+            body:datos
+        })
+        .then(resp=>resp.text())
+        .then(data=>{
+            if(interactuar=="true"){
+                acciones.style.display='table-cell'
+            }else{
+                acciones.style.display='none'
+
+            }
+
+            if(registrar=="true"){
+                showM.style.display='inline'
+            }else{
+                showM.style.display='none'
+            }
+            table_body.innerHTML=data;
+        })
+
+
     })
+       
+
+
+
+    
 }
 
 function eliminar(id){
@@ -81,7 +124,7 @@ function eliminar(id){
                         icon: 'success',
                         title: 'Elemento eliminado',
                         showConfirmButton: false,
-                        timer: 1500    
+                        timer: 800    
                     })
                 }else{
                     Swal.fire({
