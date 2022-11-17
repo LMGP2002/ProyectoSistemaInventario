@@ -34,7 +34,7 @@ include("layout/header.php");
                     <label for="min"data-dark>Hasta</label>
                     <input type ="date" value="<?php echo date('y-m-d');?>" name ="hasta" id="hasta">
                  </div>
-                 <button type="submit">
+                 <button  type="submit" > <input type="image" src="../assets/pdf.png" /></button>
              </div> 
        </div>
 </form></th>
