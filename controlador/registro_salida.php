@@ -14,10 +14,8 @@ if(isset($_POST)){
         $validarPrecio=$_POST['validarPrecio'];
 
 
-        if($validarPrecio=='Producto'){
-            $precio="$".$precio;
-        }else{
-            $precio='-';
+        if($validarPrecio=='Insumo'){
+            $precio=null;
         }
 
        

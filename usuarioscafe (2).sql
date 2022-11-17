@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 04-11-2022 a las 04:43:06
--- Versión del servidor: 10.4.25-MariaDB
--- Versión de PHP: 8.1.10
+-- Host: 127.0.0.1
+-- Generation Time: Nov 17, 2022 at 05:17 PM
+-- Server version: 10.4.25-MariaDB
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,28 +18,44 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `usuarioscafe`
+-- Database: `usuarioscafe`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `permiso`
+-- Table structure for table `permiso`
 --
 
 CREATE TABLE `permiso` (
   `id` int(11) NOT NULL,
   `id_rol` int(11) NOT NULL,
   `seccion` varchar(15) NOT NULL,
-  `eliminar` varchar(15) NOT NULL,
-  `registrar` varchar(15) NOT NULL,
-  `editar` varchar(15) NOT NULL
+  `registrar` varchar(15) NOT NULL DEFAULT 'true',
+  `interactuar` varchar(15) DEFAULT NULL,
+  `visibilidad` varchar(15) DEFAULT 'true'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `permiso`
+--
+
+INSERT INTO `permiso` (`id`, `id_rol`, `seccion`, `registrar`, `interactuar`, `visibilidad`) VALUES
+(1, 1, 'Elemento', 'false', 'true', 'true'),
+(2, 1, 'Ciudad', 'true', 'true', 'true'),
+(3, 1, 'Entrada', 'true', 'true', 'true'),
+(4, 1, 'Salida', 'true', 'true', 'true'),
+(6, 2, 'Elemento', 'true', 'true', 'true'),
+(7, 2, 'Ciudad', 'true', 'true', 'true'),
+(8, 2, 'Entrada', 'true', 'true', 'true'),
+(9, 2, 'Salida', 'true', 'true', 'true'),
+(10, 1, 'Proveedor', 'true', 'true', 'true'),
+(11, 2, 'Proveedor', 'true', 'true', 'false');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `rol`
+-- Table structure for table `rol`
 --
 
 CREATE TABLE `rol` (
@@ -48,7 +64,7 @@ CREATE TABLE `rol` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `rol`
+-- Dumping data for table `rol`
 --
 
 INSERT INTO `rol` (`id`, `nom`) VALUES
@@ -59,7 +75,7 @@ INSERT INTO `rol` (`id`, `nom`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuario`
+-- Table structure for table `usuario`
 --
 
 CREATE TABLE `usuario` (
@@ -70,7 +86,7 @@ CREATE TABLE `usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `usuario`
+-- Dumping data for table `usuario`
 --
 
 INSERT INTO `usuario` (`id_usuario`, `nom_usuario`, `contrasena`, `id_rol`) VALUES
@@ -79,24 +95,24 @@ INSERT INTO `usuario` (`id_usuario`, `nom_usuario`, `contrasena`, `id_rol`) VALU
 (13, 'laura', '680e89809965ec41e64dc7e447f175ab', 2);
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `permiso`
+-- Indexes for table `permiso`
 --
 ALTER TABLE `permiso`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_id_roll` (`id_rol`);
 
 --
--- Indices de la tabla `rol`
+-- Indexes for table `rol`
 --
 ALTER TABLE `rol`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `usuario`
+-- Indexes for table `usuario`
 --
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`id_usuario`),
@@ -104,39 +120,39 @@ ALTER TABLE `usuario`
   ADD KEY `fk_id_rol` (`id_rol`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `permiso`
+-- AUTO_INCREMENT for table `permiso`
 --
 ALTER TABLE `permiso`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT de la tabla `rol`
+-- AUTO_INCREMENT for table `rol`
 --
 ALTER TABLE `rol`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT de la tabla `usuario`
+-- AUTO_INCREMENT for table `usuario`
 --
 ALTER TABLE `usuario`
   MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- Restricciones para tablas volcadas
+-- Constraints for dumped tables
 --
 
 --
--- Filtros para la tabla `permiso`
+-- Constraints for table `permiso`
 --
 ALTER TABLE `permiso`
   ADD CONSTRAINT `fk_id_roll` FOREIGN KEY (`id_rol`) REFERENCES `rol` (`id`);
 
 --
--- Filtros para la tabla `usuario`
+-- Constraints for table `usuario`
 --
 ALTER TABLE `usuario`
   ADD CONSTRAINT `fk_id_rol` FOREIGN KEY (`id_rol`) REFERENCES `rol` (`id`);

@@ -16,14 +16,14 @@ btnregistrar.addEventListener('click',()=>{
     let stock=parseInt(elemento.getAttribute('data-stock'));
     let validarPrecio=elemento.getAttribute('data-categoria');
   
-    console.log(stock);
+
     
     if(bandera=='Modificar salida' && elemento.getAttribute('data-elemento')==elemento.textContent){
         console.log(cantidad.getAttribute('data-cant'));
         stock+=parseInt(cantidad.getAttribute('data-cant'));
     }
     
-    console.log(stock);
+  
     
     
 
