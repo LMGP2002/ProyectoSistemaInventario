@@ -9,9 +9,9 @@
 <body>
 
 	<div class="container">
-		<center>
+	
 		<h1> Reporte proveedores con más entradas </h1>
-		</center>
+		
 	
 			<div class="row">
 				<div class="row">

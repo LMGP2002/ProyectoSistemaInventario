@@ -55,7 +55,7 @@ if (isset($_POST["desde"]) && isset($_POST["hasta"]) ) {
    
     $consulta = "SELECT nombre,nom_prov, fecha_entrada,fecha_salida,precio_comp,precio_venta FROM `elemento`,`proveedor`,`entrada`,`salida` 
   WHERE elemento.codigo= entrada.codigo_elemento and elemento.codigo=salida.codigo_elemento and proveedor.id=entrada.id_prov and 
-  salida.fecha_salida BETWEEN'$desde' AND '$hasta' and entrada.fecha_entrada BETWEEN '$desde' AND '$hasta';";
+  salida.fecha_salida BETWEEN'$desde' AND '$hasta' and entrada.fecha_entrada BETWEEN '$desde' AND '$hasta'GROUP BY entrada.id_entrada;";
   $resultado= $pdo-> query($consulta);
   // Creación del objeto de la clase heredada
 $pdf = new PDF();

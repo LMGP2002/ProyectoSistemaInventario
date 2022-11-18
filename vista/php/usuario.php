@@ -18,7 +18,7 @@ include("layout/header.php");
                             <th>Código</th>
                             <th>Nombre</th>
                             <th>Rol</th>
-                            <th>Acciones</th>
+                            <th>Eliminar</th>
                         </tr>
                     </thead>
 
