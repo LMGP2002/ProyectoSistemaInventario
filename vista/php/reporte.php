@@ -12,7 +12,7 @@ include("layout/header.php");
                         <tr>
                             <th>Reporte productos más comprados</th>
                             <th>Reporte proveedores</th>
-                            <th>Reporte productos con fechas</th>
+                            <th>Reporte productos </th>
                         </tr>
                     </thead>
 
