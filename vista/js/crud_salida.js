@@ -19,16 +19,16 @@ btnregistrar.addEventListener('click',()=>{
 
     
     if(bandera=='Modificar salida' && elemento.getAttribute('data-elemento')==elemento.textContent){
-        console.log(cantidad.getAttribute('data-cant'));
         stock+=parseInt(cantidad.getAttribute('data-cant'));
     }
     
-  
     
     
-
-
+    
+    
+    
     formSalida.append('stock',stock);
+    
     
     formSalida.append('bandera',bandera);
     

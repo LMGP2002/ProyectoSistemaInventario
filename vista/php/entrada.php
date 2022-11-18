@@ -1,8 +1,8 @@
 <?php
 include("../../controlador/validarSesion.php");
+include("../../controlador/validarVistaSeccion.php");
 include("layout/header.php");
 ?>
-
         <div class="table">
             <div class="table_header">
                 <h3 class="title" data-dark>Entradas</h3>
