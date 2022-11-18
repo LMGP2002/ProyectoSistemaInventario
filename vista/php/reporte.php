@@ -10,9 +10,9 @@ include("layout/header.php");
     <table class="table" data-dark>
                     <thead>
                         <tr>
-                            <th>Código</th>
-                            <th>Nombre</th>
-                            <th>Acciones</th>
+                            <th>Reporte productos más comprados</th>
+                            <th>Reporte proveedores</th>
+                            <th>Reporte productos con fechas</th>
                         </tr>
                     </thead>
 
@@ -20,11 +20,16 @@ include("layout/header.php");
                     <tr>
                             <th>
                                 <form action="ReporteGrafica.php"  method="POST" target="_blank"> 
+                                <br>
+                                <br>
+
                                     <input type="submit" value="Generar reporte" class="btn btn-danger mt-5 mr-5 float-right" />
                                 </form>    
                             </th>
                             <th>
                                 <form action="../../controlador/repor.php"  method="POST" target="_blank"> 
+                                <br>
+                                <br>
                                     <input type="submit" value="Generar PDF" class="btn btn-danger mt-5 mr-5 float-right" />
                                 </form>
                             </th>
@@ -35,13 +40,12 @@ include("layout/header.php");
                                             <div class="form-group">
                                                 <label for="min"data-dark>Desde</label>
                                                 <input type ="date" value="<?php echo date('y-m-d');?>" name ="desde" id="desde">
-                                            </div>
-                                        </div>  
-                                        <div class="col-md-3">
-                                            <div class="form-group">
                                                 <label for="min"data-dark>Hasta</label>
-                                                <input type ="date" value="<?php echo date('y-m-d');?>" name ="hasta" id="hasta">
-                                            </div>
+                                                <input type ="date" value="<?php echo date('y-m-d');?>" name ="hasta" id="hasta"> 
+                                               
+                                                
+                                                </div>
+                                                <br>
                                             <input type="submit" value="Generar PDF" class="btn btn-danger mt-5 mr-5 float-right" />
                                         </div> 
                                     </div>
