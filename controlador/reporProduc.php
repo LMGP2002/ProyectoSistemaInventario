@@ -72,10 +72,5 @@ $pdf->SetFont('Times','',12);
     $pdf-> Cell(30,6,$mostrar['precio_venta'],1,1,'c',0); 
     
 }
-   
-
-
-
-
 $pdf->Output();
 ?>
