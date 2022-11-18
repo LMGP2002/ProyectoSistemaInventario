@@ -35,6 +35,9 @@ td button:nth-child(1){
 td button:nth-child(2){
     background-color: #f80000;
 }
+.eliminar{
+    background-color: #f80000 !important;
+}
 
 .add_new{
     padding: 10px 20px;

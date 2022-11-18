@@ -22,7 +22,7 @@ include("layout/header.php");
                             <th>Dirección</th>
                             <th>Teléfono</th>
                             <th>Ciudad</th>
-                            <th>Acciones</th>
+                            <th data-acciones>Acciones</th>
                         </tr>
                     </thead>
 

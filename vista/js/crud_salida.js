@@ -2,10 +2,50 @@ listarSalidas();
 selectElemento();
 
 function listarSalidas(){
-    fetch("../../controlador/listar_salida.php",{
-        method:"POST"
-    }).then(response => response.text()).then(response => {
-        table_body.innerHTML=response;
+    let interactuar;
+    let registrar;
+    let acciones=document.querySelector('[data-acciones]');
+    let showM=document.querySelector('#show-modal');
+    fetch("../../controlador/validarSeccion.php")
+    .then(resp=>resp.json())
+    .then(data=>{
+
+        data.forEach(el=>{
+            if(el.seccion=='Salida'){
+                interactuar=el.interactuar;
+                registrar=el.registrar;
+            }
+        })
+
+        let datos = new FormData();
+        datos.append('interactuar', interactuar);
+
+    
+       
+
+
+        fetch("../../controlador/listar_salida.php",{
+            method:"POST",
+            body:datos
+        })
+        .then(resp=>resp.text())
+        .then(data=>{
+            if(interactuar=="true"){
+                acciones.style.display='table-cell'
+            }else{
+                acciones.style.display='none'
+
+            }
+
+            if(registrar=="true"){
+                showM.style.display='inline'
+            }else{
+                showM.style.display='none'
+            }
+            table_body.innerHTML=data;
+        })
+
+
     })
 }
 btnregistrar.addEventListener('click',()=>{

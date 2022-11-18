@@ -22,7 +22,7 @@ include("layout/header.php");
                             <th>Elemento</th>
                             <th>Cantidad</th>
                             <th>Precio de venta</th>
-                            <th>Acciones</th>
+                            <th data-acciones>Acciones</th>
                         </tr>
                     </thead>
 

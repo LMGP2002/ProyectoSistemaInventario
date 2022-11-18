@@ -10,7 +10,7 @@
             <td>".$data['nomb']."</td>
             <td>".$data['Nrol']."</td>
             <td>
-                <button type='button' onClick=eliminar('".$data['id']."')><i class='fa-solid fa-trash'></i></button>
+                <button class='eliminar' type='button' onClick=eliminar('".$data['id']."')><i class='fa-solid fa-trash'></i></button>
             </td>
         </tr>";
     }

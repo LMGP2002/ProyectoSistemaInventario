@@ -18,7 +18,7 @@ include("layout/header.php");
                         <tr>
                             <th>Código</th>
                             <th>Nombre</th>
-                            <th>Acciones</th>
+                            <th data-acciones>Acciones</th>
                         </tr>
                     </thead>
 
