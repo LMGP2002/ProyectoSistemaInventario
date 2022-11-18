@@ -1,5 +1,6 @@
 <?php
 include("../../controlador/validarSesion.php");
+include("../../controlador/validarVistaSeccion.php");
 include("layout/header.php");
 ?>
 
