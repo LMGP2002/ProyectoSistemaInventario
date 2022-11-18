@@ -1,5 +1,5 @@
 <?php
-require("../../controlador/fpdf/fpdf.php");
+require("./fpdf/fpdf.php");
 
 class PDF extends FPDF
 {
@@ -7,7 +7,7 @@ class PDF extends FPDF
 function Header()
 {
     // Logo
-    $this->Image('../assets/main.png',7,15,20);
+    $this->Image('../vista/assets/main.png',7,15,20);
     // Arial bold 15
     $this->SetFont('Arial','B',10);
     // Movernos a la derecha
@@ -38,7 +38,7 @@ function Footer()
 }
 
 
-    require "../../modelo/conexion.php";
+    require "../modelo/conexion.php";
     $consulta = "SELECT * FROM proveedor";
     $resultado= $pdo-> query($consulta); 
     

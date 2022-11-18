@@ -1,5 +1,5 @@
 <?php
-require("../../controlador/fpdf/fpdf.php");
+require("./fpdf/fpdf.php");
 
 class PDF extends FPDF
 {
@@ -7,7 +7,7 @@ class PDF extends FPDF
 function Header()
 {
     // Logo
-    $this->Image('../assets/main.png',7,15,20);
+    $this->Image('../vista/assets/main.png',7,15,20);
     // Arial bold 15
     $this->SetFont('Arial','B',10);
     // Movernos a la derecha
@@ -51,7 +51,7 @@ if (isset($_POST["desde"]) && isset($_POST["hasta"]) ) {
 
 
 
-    require "../../modelo/conexion.php";
+    require "../modelo/conexion.php";
    
     $consulta = "SELECT nombre,nom_prov, fecha_entrada,fecha_salida,precio_comp,precio_venta FROM `elemento`,`proveedor`,`entrada`,`salida` 
   WHERE elemento.codigo= entrada.codigo_elemento and elemento.codigo=salida.codigo_elemento and proveedor.id=entrada.id_prov and 
