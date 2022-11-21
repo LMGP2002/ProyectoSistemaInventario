@@ -9,6 +9,7 @@ function Header()
     // Logo
     $this->Image('../vista/assets/main.png',7,15,20);
     // Arial bold 15
+    
     $this->SetFont('Arial','B',10);
     // Movernos a la derecha
     $this->Cell(80);
@@ -18,10 +19,10 @@ function Header()
     $this->Ln(30);
     $this-> Cell(10,6,'id',1,0,'c',0);    
     $this-> Cell(30,6,'nit',1,0,'c',0); 
-    $this->Cell(30,6,'nom_prov',1,0,'c',0); 
-    $this-> Cell(30,6,'direc_prov',1,0,'c',0); 
-    $this-> Cell(30,6,'tel_prov',1,0,'c',0); 
-    $this->Cell(30,6,'estado_prov',1,0,'c',0); 
+    $this->Cell(30,6,'Proveedor',1,0,'c',0); 
+    $this-> Cell(30,6,'Direccion',1,0,'c',0); 
+    $this-> Cell(30,6,'Telefono',1,0,'c',0); 
+    $this->Cell(30,6,'Estado',1,0,'c',0); 
     $this-> Cell(30,6,'Ciudad',1,1,'c',0); 
 }
 
@@ -39,7 +40,8 @@ function Footer()
 
 
     require "../modelo/conexion.php";
-    $consulta = "SELECT * FROM proveedor";
+    $consulta = "SELECT id,nit,nom_prov,direc_prov,direc_prov,tel_prov,estado_prov,nom_ciu 
+    FROM `proveedor`,`ciudad` WHERE proveedor.id_ciudad = ciudad.id_ciudad ";
     $resultado= $pdo-> query($consulta); 
     
 
@@ -57,7 +59,8 @@ while ($mostrar= $resultado->fetch(PDO::FETCH_ASSOC)){
     $pdf-> Cell(30,6,$mostrar['direc_prov'],1,0,'c',0); 
     $pdf-> Cell(30,6,$mostrar['tel_prov'],1,0,'c',0); 
     $pdf-> Cell(30,6,$mostrar['estado_prov'],1,0,'c',0); 
-    $pdf-> Cell(30,6,$mostrar['id_ciudad'],1,1,'c',0); 
+    $pdf-> Cell(30,6,$mostrar['nom_ciu'],1,1,'c',0); 
 }
+$pdf->Cell(190, 5,'Duitama, Boyacá , a '. date('d') . ' de '. date('F'). ' de '. date('Y'), 0,1,'C');
 $pdf->Output();
 ?>
