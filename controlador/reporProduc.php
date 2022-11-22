@@ -6,16 +6,23 @@ class PDF extends FPDF
 // Cabecera de página
 function Header()
 {
-    // Logo
-    $this->Image('../vista/assets/main.png',7,15,20);
-    // Arial bold 15
-    $this->SetFont('Arial','B',10);
-    // Movernos a la derecha
-    $this->Cell(80);
-    // Título
-    $this->Cell(30,25,'Listado de productos',0,0,'C');
-    // Salto de línea
-    $this->Ln(30);
+     // Logo
+     $this->Image('../vista/assets/main.png',2,2,50);
+     // Arial bold 15
+     
+     $this->SetFont('Arial','B',10);
+     
+     // Movernos a la derecha
+     $this->Cell(80);
+     // Título
+     $this->Cell(0, 20, '', 0, 1, 'C');
+     $this->Cell(0, 5, 'CAFE ARTE VILLA MONGUI', 0, 1, 'C');
+     $this->Cell(0, 5, 'REPORTE DE  PROVEEDORES', 0, 1, 'C');
+     $this->Cell(0, 5, utf8_decode("DUITAMA-BOYACÁ"), 0, 1, 'C');
+     $this->Cell(0, 5,date('d/m/Y'),0,1,'C');
+    
+     $this->Ln(5);
+    $this->Cell(190, 5,'Listado de productos',0,1,'C');
     $this-> Cell(18,6,'Producto',1,0,'c',0);    
     $this-> Cell(35,6,'Proveedor',1,0,'c',0); 
     $this->Cell(30,6,'Fecha de ingreso',1,0,'c',0); 
@@ -72,5 +79,6 @@ $pdf->SetFont('Times','',12);
     $pdf-> Cell(30,6,$mostrar['precio_venta'],1,1,'c',0); 
     
 }
+   
 $pdf->Output();
 ?>

@@ -10,7 +10,7 @@ include("layout/header.php");
     <table class="table" data-dark>
                     <thead>
                         <tr>
-                            <th>Reporte productos más comprados</th>
+                            <th>Reporte proveedores más confiables</th>
                             <th>Reporte proveedores</th>
                             <th>Reporte productos </th>
                         </tr>
