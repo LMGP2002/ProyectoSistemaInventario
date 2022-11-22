@@ -5,6 +5,12 @@
     $resultado=$consulta->fetchAll(PDO::FETCH_ASSOC);
 
     foreach($resultado as $data){
+
+
+        if($data['Nrol']=='Gerente'){
+            continue;
+        }
+        
         echo "<tr>
             <td>".$data['id']."</td>
             <td>".$data['nomb']."</td>
@@ -13,8 +19,5 @@
                 <button class='eliminar' type='button' onClick=eliminar('".$data['id']."')><i class='fa-solid fa-trash'></i></button>
             </td>
         </tr>";
-    }
-
-        
-       
+    }  
 ?>
