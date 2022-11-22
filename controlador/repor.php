@@ -4,23 +4,30 @@ require("./fpdf/fpdf.php");
 class PDF extends FPDF
 {
 // Cabecera de página
+
 function Header()
 {
     // Logo
-    $this->Image('../vista/assets/main.png',7,15,20);
+    $this->Image('../vista/assets/main.png',2,2,50);
     // Arial bold 15
     
     $this->SetFont('Arial','B',10);
+    
     // Movernos a la derecha
     $this->Cell(80);
     // Título
-    $this->Cell(30,25,'Listado de proveedores',0,0,'C');
+    $this->Cell(0, 20, '', 0, 1, 'C');
+    $this->Cell(0, 5, 'CAFE ARTE VILLA MONGUI', 0, 1, 'C');
+    $this->Cell(0, 5, 'REPORTE DE  PROVEEDORES', 0, 1, 'C');
+    $this->Cell(0, 5, utf8_decode("DUITAMA-BOYACÁ"), 0, 1, 'C');
+    $this->Cell(0, 5,date('d/m/Y'),0,1,'C');
     // Salto de línea
-    $this->Ln(30);
+    $this->Ln(5);
+    $this->Cell(190, 5,'Listado de proveedores',0,1,'C');
     $this-> Cell(10,6,'id',1,0,'c',0);    
     $this-> Cell(30,6,'nit',1,0,'c',0); 
     $this->Cell(30,6,'Proveedor',1,0,'c',0); 
-    $this-> Cell(30,6,'Direccion',1,0,'c',0); 
+    $this->Cell(30,6,utf8_decode("Dirección"),1,0,'c',0);
     $this-> Cell(30,6,'Telefono',1,0,'c',0); 
     $this->Cell(30,6,'Estado',1,0,'c',0); 
     $this-> Cell(30,6,'Ciudad',1,1,'c',0); 
@@ -47,7 +54,9 @@ function Footer()
 
 // Creación del objeto de la clase heredada
 $pdf = new PDF();
+header("Content-Type: text/html; charset=iso-8859-1 ");
 $pdf->AliasNbPages();
+
 $pdf->AddPage();
 $pdf->SetFont('Times','',12);
 
@@ -61,6 +70,5 @@ while ($mostrar= $resultado->fetch(PDO::FETCH_ASSOC)){
     $pdf-> Cell(30,6,$mostrar['estado_prov'],1,0,'c',0); 
     $pdf-> Cell(30,6,$mostrar['nom_ciu'],1,1,'c',0); 
 }
-$pdf->Cell(190, 5,'Duitama, Boyacá , a '. date('d') . ' de '. date('F'). ' de '. date('Y'), 0,1,'C');
 $pdf->Output();
 ?>
