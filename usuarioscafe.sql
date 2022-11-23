@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 17, 2022 at 05:17 PM
+-- Generation Time: Nov 23, 2022 at 06:14 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -41,15 +41,15 @@ CREATE TABLE `permiso` (
 --
 
 INSERT INTO `permiso` (`id`, `id_rol`, `seccion`, `registrar`, `interactuar`, `visibilidad`) VALUES
-(1, 1, 'Elemento', 'false', 'true', 'true'),
+(1, 1, 'Elemento', 'true', 'true', 'true'),
 (2, 1, 'Ciudad', 'true', 'true', 'true'),
-(3, 1, 'Entrada', 'true', 'true', 'true'),
+(3, 1, 'Entrada', 'true', 'false', 'true'),
 (4, 1, 'Salida', 'true', 'true', 'true'),
-(6, 2, 'Elemento', 'true', 'true', 'true'),
-(7, 2, 'Ciudad', 'true', 'true', 'true'),
-(8, 2, 'Entrada', 'true', 'true', 'true'),
-(9, 2, 'Salida', 'true', 'true', 'true'),
-(10, 1, 'Proveedor', 'true', 'true', 'true'),
+(6, 2, 'Elemento', 'true', 'true', 'false'),
+(7, 2, 'Ciudad', 'true', 'true', 'false'),
+(8, 2, 'Entrada', 'true', 'true', 'false'),
+(9, 2, 'Salida', 'true', 'true', 'false'),
+(10, 1, 'Proveedor', 'true', 'false', 'true'),
 (11, 2, 'Proveedor', 'true', 'true', 'false');
 
 -- --------------------------------------------------------
@@ -90,9 +90,11 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id_usuario`, `nom_usuario`, `contrasena`, `id_rol`) VALUES
+(1, 'JairoP', '21232f297a57a5a743894a0e4a801fc3', 3),
 (5, 'miguel', '29bfe372865737fe2bfcfd3618b1da7d', 1),
 (6, 'luis', '502ff82f7f1f8218dd41201fe4353687', 2),
-(13, 'laura', '680e89809965ec41e64dc7e447f175ab', 2);
+(13, 'laura', '680e89809965ec41e64dc7e447f175ab', 2),
+(14, 'admin', '21232f297a57a5a743894a0e4a801fc3', 3);
 
 --
 -- Indexes for dumped tables
@@ -139,7 +141,7 @@ ALTER TABLE `rol`
 -- AUTO_INCREMENT for table `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Constraints for dumped tables
