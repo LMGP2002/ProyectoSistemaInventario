@@ -1,37 +1,29 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto:ital,wght@0,100;0,300;0,400;0,700;0,900;1,500&display=swap');
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
-
-body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: #3a3b3c;
-}
 
 .card{
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -80%);
     position: relative;
     width: 350px;
     height: 190px;
-    background-color: #fff;
+    background-color: rgb(255, 255, 255);
     border-radius: 20px;
-    box-shadow: 0 35px 80px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 35px 80px rgba(0, 0, 0, .4);
     transition: 0.5s;
 }
 
 .card:hover{
-    height: 420px;
+    height: 390px;
+    transform: translate(-50%, -55%);
 
 }
 
 .card:hover .imgBx{
     width: 250px;
     height: 250px;
+}
+.card:hover .content{
+    margin-top: 90px;
 }
 
 .imgBx{
@@ -63,8 +55,9 @@ body{
     display: flex;
     flex-direction: column;
     justify-content:center;
-    margin-top: 75px;
+    margin-top: 83px;
     overflow: hidden;
+    transition: 0.5s;
 }
 
 .card .content .details{
@@ -138,4 +131,10 @@ body{
 
 li[data-seccion]{
     display:block;
+}
+
+.titlePerfil{
+    text-align: center;
+    color: rgb(90, 90, 90);
+    margin-top: 30px;
 }

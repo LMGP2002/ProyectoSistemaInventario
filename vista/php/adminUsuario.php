@@ -2,6 +2,7 @@
             <div class="table_header">
                 <h3 class="title" data-dark>Usuarios</h3>
                 <div>
+                    <button class="add_new admUser">Administrar perfil</button>
                     <input class="search" placeholder="Usuario">
                     <button class="add_new" id="show-modal">Añadir usuarios</button>
                 </div>
@@ -69,6 +70,4 @@
     <!----======== usuario ======== -->
     <script src="../js/crud_usuario.js"></script>
 
-    <?php
-        include("layout/footer.php");
-    ?>
+    

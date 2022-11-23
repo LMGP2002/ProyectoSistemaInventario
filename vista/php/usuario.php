@@ -8,5 +8,9 @@ if($rol==3){
     include("profile.php");
 }
 
+
+include("layout/footer.php");
+
+
 ?>
 

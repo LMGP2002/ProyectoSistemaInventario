@@ -2,7 +2,7 @@
 
 const barraBusqueda=document.querySelector(".search");
 
-barraBusqueda.addEventListener("input",onInputChange);
+if(barraBusqueda!=null) barraBusqueda.addEventListener("input",onInputChange);
 
 function onInputChange(){
     let inputText=barraBusqueda.value.toLowerCase();
@@ -30,5 +30,10 @@ if(closeBtn!=null){
 
 }
 
+let admUser=document.querySelector('.admUser');
 
-
+if(admUser!=null){
+    admUser.addEventListener('click',()=>{
+        window.location.href='../php/profile.php';
+    })
+}
