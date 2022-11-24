@@ -21,14 +21,15 @@ function Header()
     $this->Cell(0, 5, 'REPORTE DE  PROVEEDORES', 0, 1, 'C');
     $this->Cell(0, 5, utf8_decode("DUITAMA-BOYACÁ"), 0, 1, 'C');
     $this->Cell(0, 5,date('d/m/Y'),0,1,'C');
+    $this->Cell(0, 5,date("h:i:s"),0,1,'C');
     // Salto de línea
     $this->Ln(5);
     $this->Cell(190, 5,'Listado de proveedores',0,1,'C');
-    $this-> Cell(10,6,'id',1,0,'c',0);    
-    $this-> Cell(30,6,'nit',1,0,'c',0); 
+       
+    $this-> Cell(30,6,'Nit',1,0,'c',0); 
     $this->Cell(30,6,'Proveedor',1,0,'c',0); 
     $this->Cell(30,6,utf8_decode("Dirección"),1,0,'c',0);
-    $this-> Cell(30,6,'Telefono',1,0,'c',0); 
+    $this-> Cell(30,6,utf8_decode('Teléfono'),1,0,'c',0); 
     $this->Cell(30,6,'Estado',1,0,'c',0); 
     $this-> Cell(30,6,'Ciudad',1,1,'c',0); 
 }
@@ -60,9 +61,7 @@ $pdf->AliasNbPages();
 $pdf->AddPage();
 $pdf->SetFont('Times','',12);
 
-while ($mostrar= $resultado->fetch(PDO::FETCH_ASSOC)){
-
-    $pdf-> Cell(10,6,$mostrar['id'],1,0,'c',0);    
+while ($mostrar= $resultado->fetch(PDO::FETCH_ASSOC)){  
     $pdf-> Cell(30,6,$mostrar['nit'],1,0,'c',0); 
     $pdf-> Cell(30,6,$mostrar['nom_prov'],1,0,'c',0); 
     $pdf-> Cell(30,6,$mostrar['direc_prov'],1,0,'c',0); 

@@ -20,7 +20,10 @@ function Header()
      $this->Cell(0, 5, 'REPORTE DE  PROVEEDORES', 0, 1, 'C');
      $this->Cell(0, 5, utf8_decode("DUITAMA-BOYACÁ"), 0, 1, 'C');
      $this->Cell(0, 5,date('d/m/Y'),0,1,'C');
-    
+     $this->Cell(0, 5,date("h:i:s"),0,1,'C');
+     $this->Ln(5);
+     
+     
      $this->Ln(5);
     $this->Cell(190, 5,'Listado de productos',0,1,'C');
     $this-> Cell(18,6,'Producto',1,0,'c',0);    
@@ -29,6 +32,7 @@ function Header()
     $this-> Cell(30,6,'Fecha de salida',1,0,'c',0); 
     $this-> Cell(30,6,'precio de compra',1,0,'c',0); 
     $this->Cell(30,6,'precio de venta',1,1,'c',0); 
+
    
 }
 
@@ -52,18 +56,20 @@ if (isset($_POST["desde"]) && isset($_POST["hasta"]) ) {
    $desde=$_POST["desde"] ;
    $hasta=$_POST["hasta"] ;
    
-
-
 }
-
-
-
     require "../modelo/conexion.php";
-   
+    if (empty($desde) || empty($hasta) ) {
     $consulta = "SELECT nombre,nom_prov, fecha_entrada,fecha_salida,precio_comp,precio_venta FROM `elemento`,`proveedor`,`entrada`,`salida` 
-  WHERE elemento.codigo= entrada.codigo_elemento and elemento.codigo=salida.codigo_elemento and proveedor.id=entrada.id_prov and 
-  salida.fecha_salida BETWEEN'$desde' AND '$hasta' and entrada.fecha_entrada BETWEEN '$desde' AND '$hasta'GROUP BY entrada.id_entrada;";
-  $resultado= $pdo-> query($consulta);
+    WHERE elemento.codigo= entrada.codigo_elemento and elemento.codigo=salida.codigo_elemento and proveedor.id=entrada.id_prov GROUP BY entrada.id_entrada;";
+      
+   }else{
+    $consulta = "SELECT nombre,nom_prov, fecha_entrada,fecha_salida,precio_comp,precio_venta FROM `elemento`,`proveedor`,`entrada`,`salida` 
+    WHERE elemento.codigo= entrada.codigo_elemento and elemento.codigo=salida.codigo_elemento and proveedor.id=entrada.id_prov and 
+    salida.fecha_salida BETWEEN'$desde' AND '$hasta' and entrada.fecha_entrada BETWEEN '$desde' AND '$hasta'GROUP BY entrada.id_entrada;";  
+     
+  
+  }
+  $resultado= $pdo-> query($consulta); 
   // Creación del objeto de la clase heredada
 $pdf = new PDF();
 $pdf->AliasNbPages();
@@ -79,6 +85,7 @@ $pdf->SetFont('Times','',12);
     $pdf-> Cell(30,6,$mostrar['precio_venta'],1,1,'c',0); 
     
 }
+//$pdf-> Cell(0, 5,'Reporte desde: '+$desde +'Hasta: '+$hasta, 0, 1, 'C');
    
 $pdf->Output();
 ?>
