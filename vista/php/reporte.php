@@ -14,12 +14,12 @@ include("layout/header.php");
                     <tbody >
                     <tr>
                             <th>
-                                <form id="formReporte"  method="POST" target="_blank"> 
+                                <form id="formReporte" action="../../controlador/reporProduc.php"  method="POST" target="_blank"> 
                                     <div class="row">
                                             <div class="form-group">
-                                                    <label for="min"data-dark>Desde</label>
+                                                    <label for="desde"data-dark>Desde</label>
                                                     <input type ="date" value="<?php echo date('y-m-d');?>" name ="desde" id="desde">
-                                                    <label for="min"data-dark>Hasta</label>
+                                                    <label for="hasta"data-dark>Hasta</label>
                                                     <input type ="date" value="<?php echo date('y-m-d');?>" name ="hasta" id="hasta">
                                             </div>
                                                     <br>

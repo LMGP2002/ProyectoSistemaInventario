@@ -1,8 +1,9 @@
 
-let formReporte= new FormData(document.querySelector('#formReporte'))
-formReporte.addEventListener('submit',(e)=>
+btnReporte.addEventListener('click',(e)=>
 {
-   e.preventDefault();
+    let formReporte= new FormData(document.querySelector('#formReporte'))
+
+   console.log(formReporte.get('desde'))
 
     fetch("../../controlador/listar_reporteEl.php",{
         method:"POST",
@@ -10,7 +11,10 @@ formReporte.addEventListener('submit',(e)=>
     }).then(response => response.text()).then(response => {
         //table_body.innerHTML=response;
     console.log(response)
-    console.log(formReporte.get('desde'))
+    
     })
 
+})
+desde.addEventListener('click',(e)=>{
+console.log('puto')
 })
