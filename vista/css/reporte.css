@@ -1,0 +1,15 @@
+#logo{
+width: 180px;
+height: 200px;
+}
+.titulo{
+    position: absolute;
+    left: 25%;
+    top: 5%;
+
+}
+.datos{
+    text-align: center;
+    padding-left: 0%;
+    padding-top: 0%;
+}
