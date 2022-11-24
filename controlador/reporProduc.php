@@ -89,8 +89,8 @@ if($mostrar['precio_venta']==null){
 }
  
 
-    $pdf-> Cell(18,6,$mostrar['nombre'],1,0,'c',0);    
-    $pdf-> Cell(35,6,$mostrar['nom_prov'],1,0,'c',0); 
+    $pdf-> Cell(18,6,utf8_decode($mostrar['nombre']),1,0,'c',0);    
+    $pdf-> Cell(35,6,utf8_decode($mostrar['nom_prov']),1,0,'c',0); 
     $pdf-> Cell(25,6,$mostrar['fecha_entrada'],1,0,'c',0); 
     $pdf-> Cell(19,6,$mostrar['cantE'],1,0,'c',0);
     $pdf-> Cell(27,6,$mostrar['precio_comp'],1,0,'c',0);
