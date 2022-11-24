@@ -24,7 +24,7 @@ include("layout/header.php");
                                                 <input type ="date" value="<?php echo date('y-m-d');?>" name ="hasta" id="hasta">
                                                 </div>
                                                 <br>
-                                            <input type="submit" value="Generar PDF" class="btn btn-danger mt-5 mr-5 float-right" />
+                                            <input type="submit" value="Generar PDF" class="btn" />
                                         </div> 
                                     </div>
                                 </form>
@@ -47,27 +47,16 @@ include("layout/header.php");
                             
                         </tr>
                     </thead>
-
                     <tbody id="table_body">
-
-                   
                     </tbody>
-
-                   
-
                 </table>
             </div>
         </div>
     
-
-    
-
-  
-
-    
     </div>
-    <a href="../../controlador/logout.php" class="logoutBtn"></a>
+    
     <script src="../js/crud_reporteE.js"></script>
+    <a href="../../controlador/logout.php" class="logoutBtn"></a>
   <?php
   include("layout/footer.php");
   ?>
