@@ -8,7 +8,18 @@ include("layout/header.php");
                 <h3 class="title" data-dark>Inventario</h3>
                 <div>
                     <input class="search" placeholder="Elemento">
-                    <a href="reporte.php"><input class="btn btn-danger mt-5 mr-5 float-right" type="button" value="Reportes"></a>
+
+                    <ul class="menuReporte">
+
+                        <li>
+                            <a href="#">Reportes ▼</a>
+                            <ul class="dropdown">
+                                <li><a href="../../controlador/repor.php">Proveedores</a></li>
+                                <li><a target="_blank" href="ReporteGrafica.php">Proveedores Confiables</a></li>
+                                <li><a target="blank" href="#">Productos</a></li>
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
             </div>
 
