@@ -25,5 +25,6 @@ include("layout/header.php");
 <script src="../js/validarSesion.js"></script>
 <script src="../js/validarSeccion.js"></script>
 
+
 </body>
 </html>

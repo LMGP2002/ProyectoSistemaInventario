@@ -1,7 +1,9 @@
 let menu =document.querySelector('.menu');
-let home =document.querySelector('.home');
 
 menu.style.visibility='visible';
 
-home.style.backgroundColor='#E4E9F7'
+let modContra=document.querySelector('#modificarContraseña');
 
+modContra.addEventListener('click',()=>{
+    document.querySelector('.modal-contra').classList.add("modal-contra-active")
+})
