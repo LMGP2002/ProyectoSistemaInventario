@@ -17,7 +17,7 @@ function Header()
     $this->Cell(80);
     // Título
     $this->Cell(0, 20, '', 0, 1, 'C');
-    $this->Cell(0, 5, 'CAFE ARTE VILLA MONGUI', 0, 1, 'C');
+    $this->Cell(0, 5, utf8_decode('CAFÉ ARTE VILLA MONGUí'), 0, 1, 'C');
     $this->Cell(0, 5, 'REPORTE DE  PROVEEDORES', 0, 1, 'C');
     $this->Cell(0, 5, utf8_decode("DUITAMA-BOYACÁ"), 0, 1, 'C');
     $this->Cell(0, 5,date('d/m/Y'),0,1,'C');

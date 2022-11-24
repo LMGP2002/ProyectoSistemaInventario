@@ -12,8 +12,8 @@
 	<div class="container">
 		<img src="../assets/main.png" id="logo"></th>
 		<div class="titulo">
-			<h4 class="datos"> CAFE ARTE VILLA MONGUI</h4>
-			<h4 class="datos"> Duitama-Boyaca </h4>
+			<h4 class="datos"> CAFÉ ARTE VILLA MONGUí</h4>
+			<h4 class="datos"> Duitama-Boyacá </h4>
 	
 				<h4 class="datos" id="fecha">
 					<script>

@@ -18,7 +18,7 @@ function Header()
      $this->Cell(80);
      // Título
      $this->Cell(0, 20, '', 0, 1, 'C');
-     $this->Cell(0, 5, 'CAFE ARTE VILLA MONGUI', 0, 1, 'C');
+     $this->Cell(0, 5, utf8_decode('CAFÉ ARTE VILLA MONGUí'), 0, 1, 'C');
      $this->Cell(0, 5, 'REPORTE DE  PROVEEDORES', 0, 1, 'C');
      $this->Cell(0, 5, utf8_decode("DUITAMA-BOYACÁ"), 0, 1, 'C');
      $this->Cell(170, 5,'Fecha del reporte:',0,0,'C');
@@ -34,10 +34,10 @@ function Header()
     $this-> Cell(18,6,'Producto',1,0,'c',0);    
     $this-> Cell(35,6,'Proveedor',1,0,'c',0); 
     $this->Cell(25,6,'Fecha ingreso',1,0,'c',0);
-    $this-> Cell(19,6,'# entradas',1,0,'c',0);
+    $this-> Cell(19,6,'N.entradas',1,0,'c',0);
     $this-> Cell(27,6,'Precio compra',1,0,'c',0); 
     $this-> Cell(25,6,'Fecha salida',1,0,'c',0);
-    $this-> Cell(17,6,'# salidas',1,0,'c',0);
+    $this-> Cell(17,6,'N.salidas',1,0,'c',0);
     $this->Cell(27,6,'Precio venta',1,1,'c',0); 
    
 }
@@ -69,9 +69,9 @@ if (isset($_POST["desde"]) && isset($_POST["hasta"]) ) {
     WHERE elemento.codigo= entrada.codigo_elemento and elemento.codigo=salida.codigo_elemento and proveedor.id=entrada.id_prov GROUP BY entrada.id_entrada;";
       
    }else{
-    $consulta = "SELECT nombre,nom_prov, fecha_entrada,entrada.cant AS cantE,fecha_salida,salida.cant_elem_sal AS cantS,precio_comp,precio_venta FROM `elemento`,`proveedor`,`entrada`,`salida` 
-    WHERE elemento.codigo= entrada.codigo_elemento and elemento.codigo=salida.codigo_elemento and proveedor.id=entrada.id_prov and 
-    salida.fecha_salida BETWEEN'$desde' AND '$hasta' and entrada.fecha_entrada BETWEEN '$desde' AND '$hasta'GROUP BY entrada.id_entrada;";  
+    $consulta = "SELECT elemento.nombre,proveedor.nom_prov,entrada.fecha_entrada,entrada.cant AS cantE,salida.cant_elem_sal AS cantS ,entrada.precio_comp,salida.fecha_salida,salida.precio_venta FROM entrada 
+    INNER JOIN elemento ON elemento.codigo=entrada.codigo_elemento 
+    INNER JOIN salida ON salida.codigo_elemento=entrada.codigo_elemento inner join proveedor on proveedor.id=entrada.id_prov WHERE entrada.fecha_entrada BETWEEN '$desde' AND '$hasta' AND salida.fecha_salida BETWEEN '$desde' AND '$hasta';";  
   }
   $resultado= $pdo-> query($consulta); 
   // Creación del objeto de la clase heredada
@@ -82,8 +82,12 @@ $pdf->SetFont('Times','',10);
 
 
 while ($mostrar= $resultado->fetch(PDO::FETCH_ASSOC)){
-
-  
+if($mostrar['precio_venta']==null){
+  $precioVenta= "Sin precio";
+}else{
+  $precioVenta= '$'.$mostrar['precio_venta'];
+}
+ 
 
     $pdf-> Cell(18,6,$mostrar['nombre'],1,0,'c',0);    
     $pdf-> Cell(35,6,$mostrar['nom_prov'],1,0,'c',0); 
@@ -92,7 +96,7 @@ while ($mostrar= $resultado->fetch(PDO::FETCH_ASSOC)){
     $pdf-> Cell(27,6,$mostrar['precio_comp'],1,0,'c',0);
     $pdf-> Cell(25,6,$mostrar['fecha_salida'],1,0,'c',0); 
     $pdf-> Cell(17,6,$mostrar['cantS'],1,0,'c',0);  
-    $pdf-> Cell(27,6,$mostrar['precio_venta'],1,1,'c',0);
+    $pdf-> Cell(27,6,$precioVenta,1,1,'c',0);
     
     
 }
