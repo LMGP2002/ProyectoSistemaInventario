@@ -30,10 +30,37 @@ if(closeBtn!=null){
 
 }
 
-let admUser=document.querySelector('.admUser');
 
-if(admUser!=null){
-    admUser.addEventListener('click',()=>{
-        window.location.href='../php/profile.php';
+let closePerfil=document.querySelector('.modal-perfil');
+
+
+if(closePerfil!=null){
+    closePerfil.addEventListener('click',(e)=>{
+        if(e.target===closePerfil) document.querySelector('.modal-perfil').classList.remove("modal-perfil-active")
+    });
+
+}
+
+let verPerfil=document.querySelector('#show-modal-perfil');
+
+if(verPerfil!=null){
+    verPerfil.addEventListener('click',()=>{
+    document.querySelector('.modal-perfil').classList.add("modal-perfil-active")
+    let modContra=document.querySelector('#modificarContraseña')
+
+    modContra.addEventListener('click',()=>{
+        document.querySelector('.modal-contra').classList.add("modal-contra-active")
     })
+})
+};
+
+
+
+let closeContra=document.querySelector('.modal .close-btn-contra');
+
+if(closeContra!=null){
+    closeContra.addEventListener('click',()=>{
+        document.querySelector('.modal-contra').classList.remove("modal-contra-active")
+    });
+
 }
