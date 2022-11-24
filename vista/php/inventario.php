@@ -14,7 +14,7 @@ include("layout/header.php");
                         <li>
                             <a href="#">Reportes ▼</a>
                             <ul class="dropdown">
-                                <li><a href="../../controlador/repor.php">Proveedores</a></li>
+                                <li><a target="_blank"href="../../controlador/repor.php">Proveedores</a></li>
                                 <li><a target="_blank" href="ReporteGrafica.php">Proveedores Confiables</a></li>
                                 <li><a target="_blank" href="reporte.php">Productos</a></li>
                             </ul>

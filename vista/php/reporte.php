@@ -32,6 +32,32 @@ include("layout/header.php");
                         </tr>
                     </tbody>           
                 </table>
+                <div class="table_section">
+                <table class="table" data-dark>
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Proveedor</th>
+                            <th>Fecha entrada</th>
+                            <th># entrada</th>
+                            <th>Precio entrada</th>
+                            <th>Fecha Salida</th>
+                            <th># salida</th>
+                            <th>Precio salida</th>
+                            
+                        </tr>
+                    </thead>
+
+                    <tbody id="table_body">
+
+                   
+                    </tbody>
+
+                   
+
+                </table>
+            </div>
+        </div>
     
 
     
@@ -41,7 +67,7 @@ include("layout/header.php");
     
     </div>
     <a href="../../controlador/logout.php" class="logoutBtn"></a>
- 
+    <script src="../js/crud_reporteE.js"></script>
   <?php
   include("layout/footer.php");
   ?>
