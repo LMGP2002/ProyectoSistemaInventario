@@ -7,7 +7,7 @@ include("layout/header.php");
     <table class="table" data-dark>
                     <thead>
                         <tr>
-                            <th data-dark>Reporte productos </th>
+                            <th data-dark>Reporte elementos</th>
                         </tr>
                     </thead>
 
@@ -23,7 +23,8 @@ include("layout/header.php");
                                                     <input type ="date" value="<?php echo date('y-m-d');?>" name ="hasta" id="hasta">
                                             </div>
                                                     <br>
-                                                 <input id="btnReporte"type="submit" value="Generar PDF" class="btn" />
+                                                    <button type="click" style="background-color: #bc9667; margin:0 5px;" class="add_new" id="filtrarBtn">Filtrar por fecha</button>
+                                                    <button class="add_new" type="submit" id="btnReporte" value="Generar PDF">Generar reporte</button>
                                     </div>  
                                 </form>
                             </th>
@@ -37,10 +38,10 @@ include("layout/header.php");
                             <th>Nombre</th>
                             <th>Proveedor</th>
                             <th>Fecha entrada</th>
-                            <th># entrada</th>
+                            <th>N.entrada</th>
                             <th>Precio entrada</th>
                             <th>Fecha Salida</th>
-                            <th># salida</th>
+                            <th>N.salida</th>
                             <th>Precio salida</th>
                             
                         </tr>

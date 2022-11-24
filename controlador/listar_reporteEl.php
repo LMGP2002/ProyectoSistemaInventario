@@ -1,31 +1,61 @@
 <?php
-    require "../modelo/conexion.php";   
-    $desde=$_POST['desde']; 
+    require "../modelo/conexion.php";  
+    
+    $desde=$_POST['desde'];
     $hasta=$_POST['hasta'];
-    if (empty($desde) || empty($hasta) ) {
-        $consulta = "SELECT nombre,nom_prov, fecha_entrada,entrada.cant AS cantE,fecha_salida,salida.cant_elem_sal AS cantS,precio_comp,precio_venta FROM `elemento`,`proveedor`,`entrada`,`salida` 
-        WHERE elemento.codigo= entrada.codigo_elemento and elemento.codigo=salida.codigo_elemento and proveedor.id=entrada.id_prov GROUP BY entrada.id_entrada;";
-          
-       }else{
-        $consulta = "SELECT elemento.nombre,proveedor.nom_prov,entrada.fecha_entrada,entrada.cant AS cantE,salida.cant_elem_sal AS cantS ,entrada.precio_comp,salida.fecha_salida,salida.precio_venta FROM entrada 
-        INNER JOIN elemento ON elemento.codigo=entrada.codigo_elemento 
-        INNER JOIN salida ON salida.codigo_elemento=entrada.codigo_elemento inner join proveedor on proveedor.id=entrada.id_prov WHERE entrada.fecha_entrada BETWEEN '$desde' AND '$hasta' AND salida.fecha_salida BETWEEN '$desde' AND '$hasta';";  
-      }
-           
-           $consulta->execute();
-           $resultado=$consulta->fetchAll(PDO::FETCH_ASSOC);
-           foreach($resultado as $data){
+    if(!empty($desde) and !empty($hasta)){
 
-                echo "<tr>
-                    <td>".$data['nombre']."</td>
-                    <td>".$data['nom_prov']."</td>
-                    <td>".$data['fecha_entrada']."</td>
-                    <td>".$data['cantE']."</td>
-                    <td>".$data['precio_comp']."</td>
-                    <td>".$data['fecha_salida']."</td>
-                    <td>".$data['cantS']."</td>
-                    <td>".$data['precio_venta']."</td>
-                    
-                    
-                </tr>";
-             } 
+        $consulta2=$pdo->prepare("SELECT elemento.nombre as nombre, proveedor.nom_prov as nomP, entrada.fecha_entrada as fechE,entrada.cant as cantE,entrada.precio_comp as precC,salida.fecha_salida as fechS,salida.cant_elem_sal as cantS,salida.precio_venta as precV FROM elemento INNER JOIN entrada ON entrada.codigo_elemento=elemento.codigo INNER JOIN proveedor ON entrada.id_prov= proveedor.id INNER JOIN salida ON entrada.codigo_elemento=salida.codigo_elemento WHERE entrada.fecha_entrada BETWEEN '$desde' AND '$hasta' AND salida.fecha_salida BETWEEN '$desde' AND '$hasta' GROUP by elemento.nombre;");
+    $consulta2->execute();
+    $resultado2=$consulta2->fetchAll(PDO::FETCH_ASSOC);
+    foreach($resultado2 as $data){
+    
+        if($data['precV']==null){
+            $precioV='Sin precio';
+        }else{
+            $precioV='$'.$data['precV'];
+        }
+          echo "<tr>
+          <td>".$data['nombre']."</td>
+          <td>".$data['nomP']."</td>
+          <td>".$data['fechE']."</td>
+          <td>".$data['cantE']."</td>
+          <td>".$data['precC']."</td>
+          <td>".$data['fechS']."</td>
+          <td>".$data['cantS']."</td>
+          <td>".$precioV."</td>
+          </tr>";
+    } 
+
+
+    }else{
+        
+    $consulta=$pdo->prepare("SELECT elemento.nombre as nombre, proveedor.nom_prov as nomP, entrada.fecha_entrada as fechE,entrada.cant as cantE,entrada.precio_comp as precC,salida.fecha_salida as fechS,salida.cant_elem_sal as cantS,salida.precio_venta as precV FROM elemento INNER JOIN entrada ON entrada.codigo_elemento=elemento.codigo INNER JOIN proveedor ON entrada.id_prov= proveedor.id INNER JOIN salida ON entrada.codigo_elemento=salida.codigo_elemento GROUP by elemento.nombre;");
+    $consulta->execute();
+    $resultado=$consulta->fetchAll(PDO::FETCH_ASSOC);
+    foreach($resultado as $data){
+    
+        if($data['precV']==null){
+            $precioV='Sin precio';
+        }else{
+            $precioV='$'.$data['precV'];
+        }
+          echo "<tr>
+          <td>".$data['nombre']."</td>
+          <td>".$data['nomP']."</td>
+          <td>".$data['fechE']."</td>
+          <td>".$data['cantE']."</td>
+          <td>".$data['precC']."</td>
+          <td>".$data['fechS']."</td>
+          <td>".$data['cantS']."</td>
+          <td>".$precioV."</td>
+          </tr>";
+    } 
+    }
+
+   
+   
+
+    
+           
+      
